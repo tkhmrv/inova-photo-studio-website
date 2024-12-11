@@ -1,2 +1,4 @@
 # Исключить папку .vscode
 /.vscode
+
+.DS_Store
