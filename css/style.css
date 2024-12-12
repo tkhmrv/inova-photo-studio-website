@@ -8626,7 +8626,7 @@ textarea.form-control-lg {
   font-size: 20px;
   color: #fff;
   font-weight: 700;
-  top: 6px;
+  top: 0.33vh;
   position: relative; }
   .logo:hover {
     color: #fff; }

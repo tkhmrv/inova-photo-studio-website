@@ -516,7 +516,7 @@ var tns = function(options) {
     nav: true,
     navPosition: 'top',
     navContainer: false,
-    navAsThumbnails: false,
+    navAsThumbnails: true,
     arrowKeys: false,
     speed: 300,
     autoplay: false,
