@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<meta name="author" content="Untree.co">
+	<link rel="shortcut icon" href="favicon.png">
+
+	<meta name="description" content="" />
+	<meta name="keywords" content="bootstrap, bootstrap5" />
+	
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" href="fonts/icomoon/style.css">
+	<link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+	<link rel="stylesheet" href="css/tiny-slider.css">
+	<link rel="stylesheet" href="css/aos.css">
+	<link rel="stylesheet" href="css/glightbox.min.css">
+	<link rel="stylesheet" href="css/style.css">
+
+	<title>Archiark &mdash; Free Bootstrap 5 Website Template by Untree.co</title>
+</head>
+<body>
+
+<?php include 'templates/header.php'; ?>
+
+	<div class="hero-2 overlay" style="background-image: url('images/img_6.jpg');">
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-lg-5 mx-auto ">
+					<h1 class="mb-5 text-center"><span>Contact Us</span></h1>
+
+
+					<div class="intro-desc text-left">
+						<div class="line"></div>
+						<p>Delectus voluptatum distinctio quos eius excepturi sunt pariatur, aut, doloribus officia ea molestias beatae laudantium, quam odio ipsum veritatis est maiores velit quasi blanditiis et natus accusamus itaque.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="section sec-contact">
+		<div class="container">
+			<div class="row mb-5 justify-content-center text-center">
+				<div class="col-lg-5">
+					<h2 class="heading">Get in touch</h2>
+					<p class="text-black-50">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+				</div>
+			</div>
+			<form class="row">
+
+				<div class="col-md-6 col-lg-6">
+					<div class="mb-3">
+						<label for="name" class="ps-3 mb-2">Name</label>
+						<input type="text" class="form-control" id="name">
+					</div>
+				</div>
+
+				<div class="col-md-6 col-lg-6">
+					<div class="mb-3">
+						<label for="email" class="ps-3 mb-2">Email</label>
+						<input type="text" class="form-control" id="email">
+					</div>
+				</div>
+
+				<div class="col-md-6 col-lg-6">
+					<div class="mb-3">
+						<label for="phone" class="ps-3 mb-2">Phone</label>
+						<input type="text" class="form-control" id="phone">
+					</div>
+				</div>
+
+				<div class="col-md-6 col-lg-6">
+					<div class="mb-3">
+						<label for="subject" class="ps-3 mb-2">Subject</label>
+						<input type="text" class="form-control" id="subject">
+					</div>
+				</div>
+
+				<div class="col-md-12 col-lg-12">
+					<div class="mb-3">
+						<label for="message" class="ps-3 mb-2">Message</label>
+						<textarea class="form-control" name="" id="message" cols="30" rows="7"></textarea>
+					</div>
+				</div>
+
+				<div class="col-md-12">
+					<input type="submit" value="Send message" class="btn btn-primary">
+				</div>
+
+			</form>
+		</div>
+	</div>
+	
+
+	<?php include 'templates/footer.php'; ?>
+
+	<!-- Preloader -->
+	<div id="overlayer"></div>
+	<div class="loader">
+		<div class="spinner-border" role="status">
+			<span class="visually-hidden">Loading...</span>
+		</div>
+	</div>
+
+	<script src="js/bootstrap.bundle.min.js"></script>
+	<script src="js/tiny-slider.js"></script>
+	<script src="js/aos.js"></script>
+	<script src="js/glightbox.min.js"></script>
+	<script src="js/navbar.js"></script>
+	<script src="js/counter.js"></script>
+	<script src="js/custom.js"></script>
+</body>
+</html>

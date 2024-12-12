@@ -1,18 +1,20 @@
 <!doctype html>
 <html lang="en">
+
 <head>
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	
+
 	<meta name="author" content="Untree.co">
 	<link rel="shortcut icon" href="favicon.png">
 
 	<meta name="description" content="" />
 	<meta name="keywords" content="bootstrap, bootstrap5" />
-	
+
 	<link rel="preconnect" href="https://fonts.gstatic.com">
-	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto&display=swap"
+		rel="stylesheet">
 
 	<link rel="stylesheet" href="fonts/icomoon/style.css">
 	<link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
@@ -23,54 +25,10 @@
 
 	<title>Archiark &mdash; Free Bootstrap 5 Website Template by Untree.co</title>
 </head>
+
 <body>
 
-	<div class="site-mobile-menu site-navbar-target">
-		<div class="site-mobile-menu-header">
-			<div class="site-mobile-menu-close">
-				<span class="icofont-close js-menu-toggle"></span>
-			</div>
-		</div>
-		<div class="site-mobile-menu-body"></div>
-	</div>
-
-	<nav class="site-nav">
-		<div class="container">
-			<div class="site-navigation">
-				<a href="index.html" class="logo m-0 float-start">Archiark<span class="text-primary">.</span> </a>
-
-				<ul class="js-clone-nav d-none d-lg-inline-block text-start site-menu float-start">
-					<li><a href="index.html">Home</a></li>
-					<li class="has-children active">
-						<a href="projects.html">Projects</a>
-						<ul class="dropdown">
-							<li><a href="#">Commercial Building</a></li>
-							<li><a href="#">Cultural Lifestyle</a></li>
-							<li class="has-children">
-								<a href="#">Dropdown</a>
-								<ul class="dropdown">
-									<li><a href="#">Sub Menu One</a></li>
-									<li><a href="#">Sub Menu Two</a></li>
-									<li><a href="#">Sub Menu Three</a></li>
-								</ul>
-							</li>
-						</ul>
-					</li>
-					<li><a href="services.html">Services</a></li>
-					<li><a href="about.html">About</a></li>
-					<li><a href="contact.html">Contact Us</a></li>
-				</ul>
-
-				<a href="#" class="burger ml-auto float-end site-menu-toggle light js-menu-toggle d-inline-block d-lg-none" data-toggle="collapse" data-target="#main-navbar">
-					<span></span>
-				</a>
-				<ul class="site-menu float-end d-none d-md-block">
-					<li><a href="#" class="d-flex align-items-center text-white h2 fw-bold"><span class="icon-phone me-2"></span> <span>+ 2 292 4392 327</span></a></li>
-				</ul>
-
-			</div>
-		</div>
-	</nav>
+	<?php include 'templates/header.php'; ?>
 
 	<div class="hero-2 overlay" style="background-image: url('images/img_3.jpg');">
 		<div class="container">
@@ -81,7 +39,9 @@
 
 					<div class="intro-desc text-left">
 						<div class="line"></div>
-						<p>Delectus voluptatum distinctio quos eius excepturi sunt pariatur, aut, doloribus officia ea molestias beatae laudantium, quam odio ipsum veritatis est maiores velit quasi blanditiis et natus accusamus itaque.</p>
+						<p>Delectus voluptatum distinctio quos eius excepturi sunt pariatur, aut, doloribus officia ea
+							molestias beatae laudantium, quam odio ipsum veritatis est maiores velit quasi blanditiis et
+							natus accusamus itaque.</p>
 					</div>
 				</div>
 			</div>
@@ -92,16 +52,18 @@
 	<div class="section sec-5">
 		<div class="container">
 			<div class="row mb-5">
-				
+
 				<div class="col-lg-6 ms-auto">
-					<p>Delectus voluptatum distinctio quos eius excepturi sunt pariatur, aut, doloribus officia ea molestias beatae laudantium, quam odio ipsum veritatis est maiores velit quasi blanditiis et natus accusamus itaque.</p>
+					<p>Delectus voluptatum distinctio quos eius excepturi sunt pariatur, aut, doloribus officia ea
+						molestias beatae laudantium, quam odio ipsum veritatis est maiores velit quasi blanditiis et
+						natus accusamus itaque.</p>
 				</div>
 			</div>
 
 			<div class="row g-4">
 				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
 					<div class="single-portfolio">
-						<a href="project-single.html">
+						<a href="project-single.php">
 							<img src="images/img_8.jpg" alt="Image" class="img-fluid">
 							<div class="contents">
 								<h3>Project One</h3>
@@ -112,7 +74,7 @@
 				</div>
 				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
 					<div class="single-portfolio">
-						<a href="project-single.html">
+						<a href="project-single.php">
 							<img src="images/img_2.jpg" alt="Image" class="img-fluid">
 							<div class="contents">
 								<h3>Project Two</h3>
@@ -123,7 +85,7 @@
 				</div>
 				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
 					<div class="single-portfolio">
-						<a href="project-single.html">
+						<a href="project-single.php">
 							<img src="images/img_3.jpg" alt="Image" class="img-fluid">
 							<div class="contents">
 								<h3>Project One</h3>
@@ -135,7 +97,7 @@
 
 				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
 					<div class="single-portfolio">
-						<a href="project-single.html">
+						<a href="project-single.php">
 							<img src="images/img_4.jpg" alt="Image" class="img-fluid">
 							<div class="contents">
 								<h3>Project One</h3>
@@ -146,7 +108,7 @@
 				</div>
 				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
 					<div class="single-portfolio">
-						<a href="project-single.html">
+						<a href="project-single.php">
 							<img src="images/img_5.jpg" alt="Image" class="img-fluid">
 							<div class="contents">
 								<h3>Project Two</h3>
@@ -157,7 +119,7 @@
 				</div>
 				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
 					<div class="single-portfolio">
-						<a href="project-single.html">
+						<a href="project-single.php">
 							<img src="images/img_6.jpg" alt="Image" class="img-fluid">
 							<div class="contents">
 								<h3>Project One</h3>
@@ -167,7 +129,7 @@
 					</div>
 				</div>
 
-				
+
 			</div>
 		</div>
 	</div>
@@ -185,19 +147,22 @@
 
 				<span class="next" data-controls="next"><span class="icon-chevron-right"></span></span>
 			</div>
-			
+
 			<div class="testimonial-slide-center testimonial-center" id="testimonial-center">
 
 				<div class="item">
 					<div class="testimonial-item">
-						<div  class="testimonial-item-inner">
+						<div class="testimonial-item-inner">
 							<div class="testimonial-author mb-5">
 								<img src="images/person_2.jpg" alt="Image" class="img-fluid">
 								<strong class="d-block">James Campbell</strong>
 								<span>CEO, Co-Founder</span>
 							</div>
 							<blockquote>
-								Delectus voluptatum distinctio quos eius excepturi sunt pariatur, aut, doloribus officia ea molestias beatae laudantium, quam odio ipsum veritatis est maiores velit quasi blanditiis et natus accusamus itaque. Veniam quidem debitis odio amet voluptas distinctio dicta placeat! Et pariatur doloremque ea veniam.
+								Delectus voluptatum distinctio quos eius excepturi sunt pariatur, aut, doloribus officia
+								ea molestias beatae laudantium, quam odio ipsum veritatis est maiores velit quasi
+								blanditiis et natus accusamus itaque. Veniam quidem debitis odio amet voluptas
+								distinctio dicta placeat! Et pariatur doloremque ea veniam.
 							</blockquote>
 
 						</div>
@@ -206,14 +171,17 @@
 
 				<div class="item">
 					<div class="testimonial-item">
-						<div  class="testimonial-item-inner">
+						<div class="testimonial-item-inner">
 							<div class="testimonial-author mb-5">
 								<img src="images/person_1.jpg" alt="Image" class="img-fluid">
 								<strong class="d-block">James Campbell</strong>
 								<span>CEO, Co-Founder</span>
 							</div>
 							<blockquote>
-								Delectus voluptatum distinctio quos eius excepturi sunt pariatur, aut, doloribus officia ea molestias beatae laudantium, quam odio ipsum veritatis est maiores velit quasi blanditiis et natus accusamus itaque. Veniam quidem debitis odio amet voluptas distinctio dicta placeat! Et pariatur doloremque ea veniam.
+								Delectus voluptatum distinctio quos eius excepturi sunt pariatur, aut, doloribus officia
+								ea molestias beatae laudantium, quam odio ipsum veritatis est maiores velit quasi
+								blanditiis et natus accusamus itaque. Veniam quidem debitis odio amet voluptas
+								distinctio dicta placeat! Et pariatur doloremque ea veniam.
 							</blockquote>
 
 						</div>
@@ -222,14 +190,17 @@
 
 				<div class="item">
 					<div class="testimonial-item">
-						<div  class="testimonial-item-inner">
+						<div class="testimonial-item-inner">
 							<div class="testimonial-author mb-5">
 								<img src="images/person_3.jpg" alt="Image" class="img-fluid">
 								<strong class="d-block">James Campbell</strong>
 								<span>CEO, Co-Founder</span>
 							</div>
 							<blockquote>
-								Delectus voluptatum distinctio quos eius excepturi sunt pariatur, aut, doloribus officia ea molestias beatae laudantium, quam odio ipsum veritatis est maiores velit quasi blanditiis et natus accusamus itaque. Veniam quidem debitis odio amet voluptas distinctio dicta placeat! Et pariatur doloremque ea veniam.
+								Delectus voluptatum distinctio quos eius excepturi sunt pariatur, aut, doloribus officia
+								ea molestias beatae laudantium, quam odio ipsum veritatis est maiores velit quasi
+								blanditiis et natus accusamus itaque. Veniam quidem debitis odio amet voluptas
+								distinctio dicta placeat! Et pariatur doloremque ea veniam.
 							</blockquote>
 
 						</div>
@@ -238,14 +209,17 @@
 
 				<div class="item">
 					<div class="testimonial-item">
-						<div  class="testimonial-item-inner">
+						<div class="testimonial-item-inner">
 							<div class="testimonial-author mb-5">
 								<img src="images/person_4.jpg" alt="Image" class="img-fluid">
 								<strong class="d-block">James Campbell</strong>
 								<span>CEO, Co-Founder</span>
 							</div>
 							<blockquote>
-								Delectus voluptatum distinctio quos eius excepturi sunt pariatur, aut, doloribus officia ea molestias beatae laudantium, quam odio ipsum veritatis est maiores velit quasi blanditiis et natus accusamus itaque. Veniam quidem debitis odio amet voluptas distinctio dicta placeat! Et pariatur doloremque ea veniam.
+								Delectus voluptatum distinctio quos eius excepturi sunt pariatur, aut, doloribus officia
+								ea molestias beatae laudantium, quam odio ipsum veritatis est maiores velit quasi
+								blanditiis et natus accusamus itaque. Veniam quidem debitis odio amet voluptas
+								distinctio dicta placeat! Et pariatur doloremque ea veniam.
 							</blockquote>
 
 						</div>
@@ -255,14 +229,17 @@
 
 				<div class="item">
 					<div class="testimonial-item">
-						<div  class="testimonial-item-inner">
+						<div class="testimonial-item-inner">
 							<div class="testimonial-author mb-5">
 								<img src="images/person_5.jpg" alt="Image" class="img-fluid">
 								<strong class="d-block">James Campbell</strong>
 								<span>CEO, Co-Founder</span>
 							</div>
 							<blockquote>
-								Delectus voluptatum distinctio quos eius excepturi sunt pariatur, aut, doloribus officia ea molestias beatae laudantium, quam odio ipsum veritatis est maiores velit quasi blanditiis et natus accusamus itaque. Veniam quidem debitis odio amet voluptas distinctio dicta placeat! Et pariatur doloremque ea veniam.
+								Delectus voluptatum distinctio quos eius excepturi sunt pariatur, aut, doloribus officia
+								ea molestias beatae laudantium, quam odio ipsum veritatis est maiores velit quasi
+								blanditiis et natus accusamus itaque. Veniam quidem debitis odio amet voluptas
+								distinctio dicta placeat! Et pariatur doloremque ea veniam.
 							</blockquote>
 
 						</div>
@@ -271,14 +248,17 @@
 
 				<div class="item">
 					<div class="testimonial-item">
-						<div  class="testimonial-item-inner">
+						<div class="testimonial-item-inner">
 							<div class="testimonial-author mb-5">
 								<img src="images/person_2.jpg" alt="Image" class="img-fluid">
 								<strong class="d-block">James Campbell</strong>
 								<span>CEO, Co-Founder</span>
 							</div>
 							<blockquote>
-								Delectus voluptatum distinctio quos eius excepturi sunt pariatur, aut, doloribus officia ea molestias beatae laudantium, quam odio ipsum veritatis est maiores velit quasi blanditiis et natus accusamus itaque. Veniam quidem debitis odio amet voluptas distinctio dicta placeat! Et pariatur doloremque ea veniam.
+								Delectus voluptatum distinctio quos eius excepturi sunt pariatur, aut, doloribus officia
+								ea molestias beatae laudantium, quam odio ipsum veritatis est maiores velit quasi
+								blanditiis et natus accusamus itaque. Veniam quidem debitis odio amet voluptas
+								distinctio dicta placeat! Et pariatur doloremque ea veniam.
 							</blockquote>
 
 						</div>
@@ -286,14 +266,17 @@
 				</div>
 				<div class="item">
 					<div class="testimonial-item">
-						<div  class="testimonial-item-inner">
+						<div class="testimonial-item-inner">
 							<div class="testimonial-author mb-5">
 								<img src="images/person_3.jpg" alt="Image" class="img-fluid">
 								<strong class="d-block">James Campbell</strong>
 								<span>CEO, Co-Founder</span>
 							</div>
 							<blockquote>
-								Delectus voluptatum distinctio quos eius excepturi sunt pariatur, aut, doloribus officia ea molestias beatae laudantium, quam odio ipsum veritatis est maiores velit quasi blanditiis et natus accusamus itaque. Veniam quidem debitis odio amet voluptas distinctio dicta placeat! Et pariatur doloremque ea veniam.
+								Delectus voluptatum distinctio quos eius excepturi sunt pariatur, aut, doloribus officia
+								ea molestias beatae laudantium, quam odio ipsum veritatis est maiores velit quasi
+								blanditiis et natus accusamus itaque. Veniam quidem debitis odio amet voluptas
+								distinctio dicta placeat! Et pariatur doloremque ea veniam.
 							</blockquote>
 
 						</div>
@@ -302,14 +285,17 @@
 
 				<div class="item">
 					<div class="testimonial-item">
-						<div  class="testimonial-item-inner">
+						<div class="testimonial-item-inner">
 							<div class="testimonial-author mb-5">
 								<img src="images/person_4.jpg" alt="Image" class="img-fluid">
 								<strong class="d-block">James Campbell</strong>
 								<span>CEO, Co-Founder</span>
 							</div>
 							<blockquote>
-								Delectus voluptatum distinctio quos eius excepturi sunt pariatur, aut, doloribus officia ea molestias beatae laudantium, quam odio ipsum veritatis est maiores velit quasi blanditiis et natus accusamus itaque. Veniam quidem debitis odio amet voluptas distinctio dicta placeat! Et pariatur doloremque ea veniam.
+								Delectus voluptatum distinctio quos eius excepturi sunt pariatur, aut, doloribus officia
+								ea molestias beatae laudantium, quam odio ipsum veritatis est maiores velit quasi
+								blanditiis et natus accusamus itaque. Veniam quidem debitis odio amet voluptas
+								distinctio dicta placeat! Et pariatur doloremque ea veniam.
 							</blockquote>
 
 						</div>
@@ -318,14 +304,17 @@
 
 				<div class="item">
 					<div class="testimonial-item">
-						<div  class="testimonial-item-inner">
+						<div class="testimonial-item-inner">
 							<div class="testimonial-author mb-5">
 								<img src="images/person_1.jpg" alt="Image" class="img-fluid">
 								<strong class="d-block">James Campbell</strong>
 								<span>CEO, Co-Founder</span>
 							</div>
 							<blockquote>
-								Delectus voluptatum distinctio quos eius excepturi sunt pariatur, aut, doloribus officia ea molestias beatae laudantium, quam odio ipsum veritatis est maiores velit quasi blanditiis et natus accusamus itaque. Veniam quidem debitis odio amet voluptas distinctio dicta placeat! Et pariatur doloremque ea veniam.
+								Delectus voluptatum distinctio quos eius excepturi sunt pariatur, aut, doloribus officia
+								ea molestias beatae laudantium, quam odio ipsum veritatis est maiores velit quasi
+								blanditiis et natus accusamus itaque. Veniam quidem debitis odio amet voluptas
+								distinctio dicta placeat! Et pariatur doloremque ea veniam.
 							</blockquote>
 
 						</div>
@@ -342,7 +331,8 @@
 				<div class="col-lg-4 align-self-center mb-5">
 					<span class="d-block subheading mb-3">We are committed</span>
 					<h2 class="heading mb-4">The road of success is always under construction</h2>
-					<p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+					<p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It
+						is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
 				</div>
 				<div class="col-lg-7">
 					<a href="https://www.youtube.com/watch?v=mwtbEGNABWU" class="video-wrap glightbox">
@@ -360,7 +350,8 @@
 						</div>
 						<div class="text">
 							<h3 class="h6 fw-bold text-black">We provide best services</h3>
-							<p class="text-black-50">Delectus voluptatum distinctio quos eius excepturi sunt pariatur, aut, doloribus officia ea molestias beatae laudantium.</p>
+							<p class="text-black-50">Delectus voluptatum distinctio quos eius excepturi sunt pariatur,
+								aut, doloribus officia ea molestias beatae laudantium.</p>
 							<p>
 								<a href="#" class="more-2">Learn more <span class="icon-arrow_forward"></span></a>
 							</p>
@@ -374,7 +365,8 @@
 						</div>
 						<div class="text">
 							<h3 class="h6 fw-bold text-black">We provide best services</h3>
-							<p class="text-black-50">Delectus voluptatum distinctio quos eius excepturi sunt pariatur, aut, doloribus officia ea molestias beatae laudantium.</p>
+							<p class="text-black-50">Delectus voluptatum distinctio quos eius excepturi sunt pariatur,
+								aut, doloribus officia ea molestias beatae laudantium.</p>
 							<p>
 								<a href="#" class="more-2">Learn more <span class="icon-arrow_forward"></span></a>
 							</p>
@@ -388,7 +380,8 @@
 						</div>
 						<div class="text">
 							<h3 class="h6 fw-bold text-black">We provide best services</h3>
-							<p class="text-black-50">Delectus voluptatum distinctio quos eius excepturi sunt pariatur, aut, doloribus officia ea molestias beatae laudantium.</p>
+							<p class="text-black-50">Delectus voluptatum distinctio quos eius excepturi sunt pariatur,
+								aut, doloribus officia ea molestias beatae laudantium.</p>
 							<p>
 								<a href="#" class="more-2">Learn more <span class="icon-arrow_forward"></span></a>
 							</p>
@@ -398,85 +391,8 @@
 			</div>
 		</div>
 	</div>
-	
 
-	<div class="site-footer bg-light">
-		<div class="container">
-
-			<div class="row justify-content-between">
-				<div class="col-lg-4">
-					<div class="widget">
-						<h3 class="line-top">About</h3>
-						<p class="mb-5">Delectus voluptatum distinctio quos eius excepturi sunt pariatur, aut, doloribus officia ea molestias beatae laudantium, quam odio ipsum veritatis est maiores velit quasi blanditiis et natus accusamus itaque. Veniam quidem debitis odio amet voluptas distinctio dicta placeat! Et pariatur doloremque ea veniam. Separated they live.</p>
-
-					</div>
-					<div class="widget">
-						<h3 class="line-top">Connect with us</h3>
-						<ul class="social list-unstyled mb-5">
-							<li><a href="#"><span class="icon-facebook"></span></a></li>
-							<li><a href="#"><span class="icon-twitter"></span></a></li>
-							<li><a href="#"><span class="icon-instagram"></span></a></li>
-							<li><a href="#"><span class="icon-dribbble"></span></a></li>
-							<li><a href="#"><span class="icon-linkedin"></span></a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-lg-6">
-					<div class="row">
-						<div class="col-12">
-							<div class="widget">
-								<h3 class="line-top">Navigations</h3>
-							</div>
-						</div>
-						<div class="col-6 col-sm-6 col-md-4">
-							<div class="widget">
-								<ul class="links list-unstyled">
-									<li><a href="#">Home</a></li>
-									<li><a href="#">Services</a></li>
-									<li><a href="#">Work</a></li>
-									<li><a href="#">Process</a></li>
-									<li><a href="#">About Us</a></li>
-								</ul>
-							</div>
-						</div>
-						<div class="col-6 col-sm-6 col-md-4">
-							<div class="widget">
-								<ul class="links list-unstyled">
-									<li><a href="#">Press</a></li>
-									<li><a href="#">Blog</a></li>
-									<li><a href="#">Contact</a></li>
-									<li><a href="#">Support</a></li>
-									<li><a href="#">Privacy</a></li>
-								</ul>
-							</div>
-						</div>
-						<div class="col-6 col-sm-6 col-md-4">
-							<div class="widget">
-								<ul class="links list-unstyled">
-									<li><a href="#">Privacy</a></li>
-									<li><a href="#">FAQ</a></li>
-									<li><a href="#">Careers</a></li>
-									<li><a href="#">Process</a></li>
-									<li><a href="#">About Us</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="row justify-content-center text-center copyright">
-				<div class="col-md-8">
-					<p class="small text-black-50">Copyright &copy;<script>document.write(new Date().getFullYear());</script>. All Rights Reserved. &mdash; Designed with love by <a href="https://untree.co">Untree.co</a> <!-- License information: https://untree.co/license/ -->
-					</p>
-				</div>
-			</div>
-		</div>
-	</div>
-
-
-	
-
+	<?php include 'templates/footer.php'; ?>
 
 	<!-- Preloader -->
 	<div id="overlayer"></div>
@@ -494,4 +410,5 @@
 	<script src="js/counter.js"></script>
 	<script src="js/custom.js"></script>
 </body>
+
 </html>
