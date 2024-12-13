@@ -65,7 +65,7 @@
 
 			<div class="row justify-content-center text-center copyright">
 				<div class="col-md-8">
-					<p class="small text-black-50">Copyright &copy;<script>document.write(new Date().getFullYear());</script>. All Rights Reserved. &mdash; Designed with love by <a href="https://untree.co">Untree.co</a> <!-- License information: https://untree.co/license/ -->
+					<p class="small text-black-50">Copyright &copy;<script>document.write(new Date().getFullYear());</script>. All Rights Reserved. &mdash; Designed with love by <a href="https://t.me/smmrv">smmrv</a>
 					</p>
 				</div>
 			</div>

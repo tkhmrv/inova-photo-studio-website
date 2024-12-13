@@ -38,6 +38,18 @@
 				dropdown.setAttribute('class', 'collapse');
 				dropdown.setAttribute('id', 'collapseItem' + counter);
 
+				arrowCollapse.addEventListener('click', function(e) {
+					e.preventDefault();
+					var collapseTarget = document.querySelector(arrowCollapse.getAttribute('data-target'));
+					if (collapseTarget.classList.contains('show')) {
+						collapseTarget.classList.remove('show');
+						arrowCollapse.classList.add('collapsed');
+					} else {
+						collapseTarget.classList.add('show');
+						arrowCollapse.classList.remove('collapsed');
+					}
+				});
+
 				counter++;
 			});
 

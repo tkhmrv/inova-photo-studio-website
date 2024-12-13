@@ -1,4 +1,4 @@
-<div class="site-mobile-menu site-navbar-target">
+	<div class="site-mobile-menu site-navbar-target">
 		<div class="site-mobile-menu-header">
 			<div class="site-mobile-menu-close">
 				<span class="icofont-close js-menu-toggle"></span>
@@ -16,17 +16,13 @@
 					<li class="active"><a href="index.php">Главная</a></li>
 					<li class="has-children">
 						<a href="projects.php">Проекты</a>
-						<ul class="dropdown">
-							<li><a href="#">Commercial Building</a></li>
-							<li><a href="#">Cultural Lifestyle</a></li>
-							<li class="has-children">
-								<a href="#">Dropdown</a>
-								<ul class="dropdown">
-									<li><a href="#">Sub Menu One</a></li>
-									<li><a href="#">Sub Menu Two</a></li>
-									<li><a href="#">Sub Menu Three</a></li>
-								</ul>
-							</li>
+						<ul class="dropdown" style="min-width: 11vw;">
+							<li><a href="project-nike.php">Nike</a></li>
+							<li><a href="project-acne.php">Acne Studios</a></li>
+							<li><a href="project-koronskaya.php">Анастасия Коронская</a></li>
+							<li><a href="project-teo.php">Тео Крафорд</a></li>
+							<li><a href="project-rds.php">RDS GP</a></li>
+							<li><a href="project-surf.php">Серфинг на Камчатке</a></li>
 						</ul>
 					</li>
 					<li><a href="services.php">Услуги</a></li>

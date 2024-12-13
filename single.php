@@ -5,11 +5,12 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
-	<meta name="author" content="Untree.co">
-	<link rel="shortcut icon" href="favicon.png">
+	<meta name="author" content="Tikhomirov Semyon">
+	<link rel="shortcut icon" href="images/logo.png">
 
-	<meta name="description" content="" />
-	<meta name="keywords" content="bootstrap, bootstrap5" />
+	<meta name="description"
+		content="Одна из лучших и перспективных студий профессиональной фотографии и видеосъемки в Санкт-Петербурге. Приглашаем моделей, фотографов и видеографов в нашу команду." />
+	<meta name="keywords" content="фотостудия, фотосалон, фотография, видеография" />
 	
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto&display=swap" rel="stylesheet">
