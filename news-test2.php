@@ -1,3 +1,84 @@
+<?php
+// Подключаем файл с подключением к базе данных
+require_once 'db_connection.php'; // Предположим, ваш файл называется db_connection.php
+require_once 'functions.php';
+
+// Получение слага из URL или другого источника
+$slug = isset($_GET['slug']) ? $conn->real_escape_string($_GET['slug']) : '';
+
+//$slug = $_GET['slug'] ?? null;
+
+if (empty($slug)) {
+    die("Slug is required.");
+}
+
+// SQL-запрос для получения данных о посте по слагу
+$query = "
+SELECT 
+    p.id, 
+    p.title, 
+    p.main_photo, 
+    p.content, 
+    p.created_at, 
+    p.author, 
+    p.author_description, 
+    p.author_photo,
+    GROUP_CONCAT(DISTINCT c.name SEPARATOR ', ') AS categories,
+    GROUP_CONCAT(DISTINCT t.name SEPARATOR ', ') AS tags
+FROM 
+    posts p
+LEFT JOIN 
+    post_categories pc ON p.id = pc.post_id
+LEFT JOIN 
+    categories c ON pc.category_id = c.id
+LEFT JOIN 
+    post_tags pt ON p.id = pt.post_id
+LEFT JOIN 
+    tags t ON pt.tag_id = t.id
+WHERE 
+    p.slug = '$slug'
+GROUP BY 
+    p.id
+";
+
+$result = $conn->query($query);
+
+// Проверка, найден ли пост
+if ($result && $result->num_rows > 0) {
+    // Извлекаем данные поста
+    $post = $result->fetch_assoc();
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $name = mysqli_real_escape_string($conn, $_POST['name']);
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $website = mysqli_real_escape_string($conn, $_POST['website']);
+    $message = mysqli_real_escape_string($conn, $_POST['message']);
+
+    // Вставляем комментарий в базу данных
+    $comment_query = "INSERT INTO comments (post_slug, name, email, website, message) VALUES (?, ?, ?, ?, ?)";
+    $stmt = $conn->prepare($comment_query);
+    $stmt->bind_param("issss", $slug, $name, $email, $website, $message);
+    if ($stmt->execute()) {
+        header("Location: " . $_SERVER['REQUEST_URI']); // Перезагружаем страницу
+        exit();
+    } else {
+        echo "Ошибка: " . $stmt->error;
+    }
+}
+
+// Закрытие соединения
+//$conn->close();
+
+// Пример исходной даты из БД
+$created_at = $post['created_at'];
+
+// Преобразование даты в формат "14 Декабря 2024 в 13:30"
+$date = new DateTime($created_at);
+$formatted_date = $date->format('d') . ' ' . mb_strtolower(getMonthName($date->format('m'))) . ' ' . $date->format('Y') . ' в ' . $date->format('H:i');
+
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -31,15 +112,14 @@
 
 	<?php include 'templates/header.php'; ?>
 
-	<div class="hero-2 overlay" style="background-image: url('images/film.jpg')">
+	<div class="hero-2 overlay" style="background-image: url('images/<?php echo htmlspecialchars($post['main_photo']); ?>')">
 		<div class="container">
 			<div class="row align-items-center justify-content-center">
 				<div class="col-lg-10 text-center mx-auto">
 
-					<h1 class="heading text-white" data-aos="fade-up">Пленочная фотография? Да легко!</h1>
+					<h1 class="heading text-white" data-aos="fade-up"><?php echo htmlspecialchars($post['title']); ?></h1>
 					<p class="text-white" data-aos="fade-up" data-aos-delay="100"><span class="d-block mb-3 text-white"
-							data-aos="fade-up">Июль 17, 2024 <span class="mx-2 text-primary">&bullet;</span> Тео
-							Крафорд</span></p>
+							data-aos="fade-up"><?php echo $formatted_date; ?><span class="mx-2 text-primary">&bullet;</span> <?php echo htmlspecialchars($post['author']); ?></span></p>
 				</div>
 			</div>
 		</div>
@@ -49,41 +129,16 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-8 blog-content pe-5">
-					<p class="lead">Спешим порадовать фотографов, которые не изменяют традициям и даже в цифровой век
-						используют фотопленку. С этого дня наш фотосалон предлагает услуги проявки четырьмя разными
-						процессами, а также оцифровку пленки.</p>
-					<p>Проявка по процессу C-41 осуществляется в проходных процессорах Noritsu (V30, V50 и V100) и
-						Fujifilm FP-232, с использованием отлично себя зарекомендовавших материалов фирмы Kodak.
-						Автоматический контроль рабочей температуры и постоянное обновление растворов обеспечивают
-						высочайшую стабильность и качество обработки.</p>
-
-					<blockquote>
-						<p>Проявка цветных обращаемых фотопленок по процессу Е-6 осуществляется в машине ротационного
-							типа JOBO ATL-1500 фирменными растворами FUJI HUNT PRO Е6, с использованием дистиллированной
-							воды, что гарантирует идеальную равномерность обработки эмульсии и стабильность процесса.
-						</p>
-					</blockquote>
-
-					<p>Проявка черно-белых негативных фотопленок по процессу D-76 осуществляется в машине ротационного
-						типа JOBO ATL-1500 с использованием проявителя Kodak Professional, специально рекомендованном
-						для применения в проявочных машинах этого типа.</p>
-
-					<p>ЕCN-II — это процесс проявки негативных цветных киноплёнок. Цветные негативные кинопленки сейчас
-						активно используют для фотографии. Единственная особенность — сажевый противоореольный слой,
-						который не позволяет проявлять такие пленки в автоматическом проявочном процессоре. В настоящих
-						проявочных процессорах для ECN-II первым этапом идет смывка противоорельного слоя: под давлением
-						специальные форсунки смывают сажу с пленки, валики убирают остатки сажи и далее пленка попадает
-						в проявочные емкости с составами, мало отличающимися от процесса C-41.</p>
-
+					<?php echo $post['content'] ?>
 					<div class="pt-5">
-						<p>Тэги: <a>#оцифровка</a>, <a>#пленка</a>, <a>#проявка</a>
+						<p>Тэги: <a><?php echo htmlspecialchars($post['tags']); ?></a>
 						<p>
 					</div>
 
 
 					<div class="pt-5">
 						<h3 class="mb-5">6 Comments</h3>
-						<ul class="comment-list">
+						<!-- <ul class="comment-list">
 							<li class="comment">
 								<div class="vcard bio">
 									<img src="images/person_2.jpg" alt="Free Website Template by Free-Template.co">
@@ -166,6 +221,32 @@
 										name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
 								</div>
 							</li>
+						</ul> -->
+
+						<ul class="comment-list">
+						
+						<?php
+						$query = "SELECT * FROM comments WHERE post_slug = ? ORDER BY comment_created_at DESC";
+						$stmt = $conn->prepare($query);
+						$stmt->bind_param("i", $slug);
+						$stmt->execute();
+						$result = $stmt->get_result();
+
+						while ($row = $result->fetch_assoc()) {
+							echo '
+							<li class="comment">
+								<div class="vcard bio">
+									<img src="images/person_1.jpg" alt="User Avatar">
+								</div>
+								<div class="comment-body">
+									<h3>' . htmlspecialchars($row['name']) . '</h3>
+									<div class="meta">' . htmlspecialchars($row['comment_created_at']) . '</div>
+									<p>' . nl2br(htmlspecialchars($row['message'])) . '</p>
+								</div>
+							</li>';
+						}
+						?>
+
 						</ul>
 						<!-- END comment-list -->
 
@@ -201,19 +282,16 @@
 
 				<div class="col-md-4 sidebar">
 					<div class="sidebar-box">
-						<img src="images/teo-news.jpg" alt="Free Website Template by Free-Template.co"
+						<img src="images/<?php echo htmlspecialchars($post['author_photo']); ?>" alt="Free Website Template by Free-Template.co"
 							class="img-fluid mb-4 w-50 rounded-circle">
 						<h3 class="text-black">Об авторе</h3>
-						<p>Я Тео, фотограф и режиссер, работающий в Австрии, но имеющий корни в Великобритании и Японии.
-							Я почти всегда использую пленку и люблю фотографировать все, что вызывает во мне интерес.
-							Обычно это ландшафты, дома, интерьеры, сцены на улицах и необычное освещение.</p>
+						<p><?php echo htmlspecialchars($post['author_description']); ?></p>
 					</div>
 
 					<div class="sidebar-box">
 						<div class="categories">
 							<h3>Категории</h3>
-							<li><a style="color: #fc5404;">Пленка <span>(1)</span></a></li>
-							<li><a style="color: #fc5404;">Фотография <span>(1)</span></a></li>
+							<li><a style="color: #fc5404;"><?php echo htmlspecialchars($post['categories']); ?></a></li>
 						</div>
 					</div>
 				</div>
