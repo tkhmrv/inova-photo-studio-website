@@ -17,23 +17,23 @@
     <tr>
       <td style="padding: 0 20px;">
         <p>Здравствуйте, {{username}}!</p>
-        <p>Благодарим за регистрацию. Пожалуйста, подтвердите свой email, нажав на кнопку ниже.</p>
+        <p>Благодарим за регистрацию на сайте фотостудии Inova. Пожалуйста, подтвердите свой email, нажав на кнопку ниже.</p>
       </td>
     </tr>
     <tr>
       <td style="text-align: center; padding: 20px;">
-        <a href="{{confirmation_link}}" style="display: inline-block; padding: 10px 20px; background-color: #007bff; color: #ffffff; text-decoration: none; border-radius: 4px; font-size: 16px;">Подтвердить Email</a>
+        <a href="{{confirmation_link}}" style="display: inline-block; padding: 10px 20px; background-color: #fc5404; color: #ffffff; text-decoration: none; border-radius: 4px; font-size: 16px;">Подтвердить Email</a>
       </td>
     </tr>
     <tr>
       <td style="padding: 0 20px;">
         <p>Если кнопка не работает, перейдите по ссылке:</p>
-        <p><a href="{{confirmation_link}}" style="color: #007bff;">{{confirmation_link}}</a></p>
+        <p><a href="{{confirmation_link}}" style="color: #fc5404;">{{confirmation_link}}</a></p>
       </td>
     </tr>
     <tr>
       <td style="text-align: center; padding: 20px; font-size: 12px; color: #999;">
-        <p>© 2024 Тихомиров С. Д. Все права защищены.</p>
+        <p>© 2024 Inova. Все права защищены.</p>
       </td>
     </tr>
   </table>

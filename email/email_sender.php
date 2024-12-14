@@ -1,7 +1,7 @@
 <?php
-require 'phpmailer/PHPMailer.php';
-require 'phpmailer/SMTP.php';
-require 'phpmailer/Exception.php';
+require '../vendor/phpmailer/src/PHPMailer.php';
+require '../vendor/phpmailer/src/SMTP.php';
+require '../vendor/phpmailer/src/Exception.php';
 
 require_once('../functions.php');
 
@@ -9,12 +9,12 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 $email = $_GET['email'];
-$username = $_GET['user_username'];
+$username = $_GET['username'];
 $email_token = $_GET['token'];
 
 $mail = new PHPMailer(true);
-$confirmation_link = "https://tihomirov.xn--80ahdri7a.site/cw/main-site/email/confirm.php?token=$email_token";
-$titleMail = "Подтверждение регистрации на сайте фотостудии";
+$confirmation_link = "https://tihomirov.xn--80ahdri7a.site/cw/email/email_confirmed.php?token=$email_token";
+$titleMail = "Подтверждение регистрации на сайте фотостудии Inova";
 
 try {
   $mail->isSMTP();
@@ -27,13 +27,13 @@ try {
   $mail->SMTPSecure = 'ssl';
   $mail->Port = 465;
 
-  $mail->setFrom($_ENV['MAIL_USER_ADDRESS'], 'Фотостудия - подтверждение регистрации');
+  $mail->setFrom($_ENV['MAIL_USER_ADDRESS'], 'Фотостудия Inova - подтверждение регистрации');
   $mail->addAddress($email);
 
   $mail->isHTML(true);
   $mail->Subject = $titleMail;
 
-  $bodyTemplate = file_get_contents('template_confirm.php');
+  $bodyTemplate = file_get_contents('confirmation_template.php');
   $body = str_replace(
     ['{{username}}', '{{confirmation_link}}'],
     [$username, $confirmation_link],
@@ -43,10 +43,10 @@ try {
   $mail->Body = $body;
   $mail->send();
 
-  echo "Письмо успешно отправлено";
+  echo "Письмо успешно отправлено!";
 
   // Перенаправление на страницу профиля
-  header("Location: /cw/main-site/profile_user.php");
+  header("Location: /cw/account.php");
 } catch (Exception $e) {
-  echo "Ошибка при отправке письма: {$mail->ErrorInfo}";
+  echo "Ошибка при отправке письма: {$mail->ErrorInfo}!";
 }

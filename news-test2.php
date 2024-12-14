@@ -271,7 +271,7 @@ $formatted_date = $date->format('d') . ' ' . mb_strtolower(getMonthName($date->f
 									<textarea name="" id="message" cols="30" rows="10" class="form-control"></textarea>
 								</div>
 								<div class="mb-3">
-									<input type="submit" value="Post Comment" class="btn btn-primary btn-md text-white">
+									<input type="submit" value="Post Comment" class="btn btn-primary btn-md">
 								</div>
 
 							</form>

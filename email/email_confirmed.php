@@ -6,7 +6,7 @@ $token = $_GET['token'] ?? null;
 
 if ($token) {
   // Проверка токена
-  $stmt = mysqli_prepare($conn, "SELECT * FROM user WHERE token = ?");
+  $stmt = mysqli_prepare($conn, "SELECT * FROM users WHERE token = ?");
   mysqli_stmt_bind_param($stmt, "s", $token);
   mysqli_stmt_execute($stmt);
   $result = mysqli_stmt_get_result($stmt);
@@ -14,7 +14,7 @@ if ($token) {
 
   if ($user) {
     // Подтверждение email
-    $stmt = mysqli_prepare($conn, "UPDATE user SET check_mail = 0 WHERE token = ?");
+    $stmt = mysqli_prepare($conn, "UPDATE users SET email_verified = 1 WHERE token = ?");
     mysqli_stmt_bind_param($stmt, "s", $token);
     mysqli_stmt_execute($stmt);
 

@@ -8623,10 +8623,10 @@ textarea.form-control-lg {
   position: relative; }
 
 .logo {
-  font-size: 20px;
+  font-size: 24px;
   color: #fff;
   font-weight: 700;
-  top: 0.33vh;
+  top: 0.15vh;
   position: relative; }
   .logo:hover {
     color: #fff; }
@@ -8638,7 +8638,7 @@ textarea.form-control-lg {
   width: 100%; }
 
 .site-nav {
-  padding-top: 20px;
+  padding-top: 25px;
   padding-bottom: 20px; }
   .site-nav h1, .site-nav .h1 {
     margin: 0;
@@ -8647,9 +8647,10 @@ textarea.form-control-lg {
   .site-nav .site-navigation .site-menu {
     margin-bottom: 0; }
     .site-nav .site-navigation .site-menu > li {
-      display: inline-block; }
+      display: inline-block; 
+      font-size: 16px !important; }
       .site-nav .site-navigation .site-menu > li > a {
-        font-size: 14px;
+        font-size: 16px !important;
         padding: 10px 15px;
         display: inline-block;
         text-decoration: none !important;
@@ -8852,12 +8853,14 @@ textarea.form-control-lg {
       padding: 5px 20px;
       display: block;
       position: relative;
-      color: #000; }
+      color: #000; 
+      font-size: 16px !important; }
       .site-mobile-menu .site-nav-wrap a:hover {
         color: #fc5404; }
     .site-mobile-menu .site-nav-wrap li {
       position: relative;
-      display: block; }
+      display: block;
+      font-size: 16px !important; }
       .site-mobile-menu .site-nav-wrap li.active > a {
         color: #fc5404; }
     .site-mobile-menu .site-nav-wrap .arrow-collapse {
@@ -8896,7 +8899,7 @@ textarea.form-control-lg {
       width: 100%; }
       .site-mobile-menu .site-nav-wrap > li > a {
         padding-left: 20px;
-        font-size: 14px; }
+        font-size: 16px; }
       .site-mobile-menu .site-nav-wrap > li > ul {
         padding: 0;
         margin: 0;
@@ -8905,14 +8908,14 @@ textarea.form-control-lg {
           display: block; }
           .site-mobile-menu .site-nav-wrap > li > ul > li > a {
             padding-left: 40px;
-            font-size: 14px; }
+            font-size: 16px; }
           .site-mobile-menu .site-nav-wrap > li > ul > li > ul {
             padding: 0;
             margin: 0; }
             .site-mobile-menu .site-nav-wrap > li > ul > li > ul > li {
               display: block; }
               .site-mobile-menu .site-nav-wrap > li > ul > li > ul > li > a {
-                font-size: 14px;
+                font-size: 16px;
                 padding-left: 60px; }
 
 .sticky-wrapper {
@@ -9042,7 +9045,7 @@ a {
 
 .btn {
   padding: 12px 20px;
-  border-radius: 0; }
+  border-radius: 5px; }
   .btn.btn-primary {
     background-color: #000;
     color: #fff;
