@@ -27,7 +27,6 @@
 	<title>Inova &mdash; студия профессиональной фотографии и видеосъемки</title>
 </head>
 
-<body>
 
 	<?php include 'templates/header.php'; ?>
 

@@ -4465,7 +4465,7 @@ textarea.form-control-lg {
   -webkit-filter: invert(1) grayscale(100%) brightness(200%);
   filter: invert(1) grayscale(100%) brightness(200%); }
 
-.toast {
+/* .toast {
   width: 350px;
   max-width: 100%;
   font-size: 0.875rem;
@@ -4515,7 +4515,71 @@ textarea.form-control-lg {
   overflow: hidden; }
   .modal-open .modal {
     overflow-x: hidden;
-    overflow-y: auto; }
+    overflow-y: auto; } */
+
+    .toast-container {
+      position: fixed;
+      bottom: 1rem;
+      right: 1rem;
+      z-index: 1100;
+      max-width: 400px;
+      width: 100%;
+    }
+    
+    .toast {
+      width: 100%;
+      background-color: #28a745;
+      color: white;
+      border-radius: 8px; /* Более мягкие углы */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 0 0 0.2rem rgba(4, 255, 146, 0.25);
+      opacity: 0;
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      transform: translateY(20px);
+      display: flex;
+      align-items: center; /* Центрирование по вертикали */
+      justify-content: space-between;
+      padding: 0.75rem 1rem;
+    }
+    
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .toast.error {
+      background-color: #dc3545;
+    }
+    
+    .toast-body {
+      flex-grow: 1; /* Занимает оставшееся пространство */
+      margin-right: 0.5rem; /* Отступ между текстом и кнопкой */
+      font-size: 1rem; /* Более читаемый текст */
+      line-height: 1.4;
+    }
+    
+    .toast .btn-close {
+      color: white;
+      opacity: 0.8;
+      padding: 0.25rem; /* Уменьшаем padding для кнопки */
+      font-size: 1.25rem; /* Размер крестика */
+      background: none;
+      border: none;
+      cursor: pointer;
+      /* display: flex; */
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0; /* Запрещает кнопке сжиматься */
+    }
+    
+    .toast .btn-close:hover {
+      opacity: 1;
+    }
+    
+    .toast-container .toast:not(:last-child) {
+      margin-bottom: 1rem; /* Разделение тостов */
+    }
+    
+    
 
 .modal {
   position: fixed;
@@ -8843,7 +8907,8 @@ textarea.form-control-lg {
     position: relative;
     padding: 0 20px 20px 20px;
     height: calc(100vh - 52px);
-    padding-bottom: 150px; }
+    padding-bottom: 150px; 
+    margin-bottom: 80px;}  /* абаюнда */
   .site-mobile-menu .site-nav-wrap {
     padding: 0;
     margin: 0;
@@ -8917,6 +8982,11 @@ textarea.form-control-lg {
               .site-mobile-menu .site-nav-wrap > li > ul > li > ul > li > a {
                 font-size: 16px;
                 padding-left: 60px; }
+
+.user-menu {
+  z-index: 1050; /* Поверх меню */
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Тень для разделения */
+}
 
 .sticky-wrapper {
   position: absolute;

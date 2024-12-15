@@ -66,7 +66,6 @@ function getCurrentUser()
   $query->bind_param("i", $user_id);
   $query->execute();
   $result = $query->get_result();
-
   $user = $result->fetch_assoc();
   $query->close();
   return $user;

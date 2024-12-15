@@ -27,7 +27,6 @@
 	<title>Inova &mdash; студия профессиональной фотографии и видеосъемки</title>
 </head>
 
-<body>
 	<?php include 'templates/header.php'; ?>
 
 	<div class="hero-2 overlay" style="background-image: url('images/hero.jpg');">
@@ -496,5 +495,4 @@
 	<script src="js/counter.js"></script>
 	<script src="js/custom.js"></script>
 </body>
-
 </html>

@@ -24,10 +24,11 @@ $query = "UPDATE users SET name = ?, username = ?, email = ?, website = ? WHERE 
 $stmt = $conn->prepare($query);
 $stmt->bind_param('ssssi', $name, $username, $email, $website, $user_id);
 
+
 if ($stmt->execute()) {
-    $_SESSION['success'] = "Информация успешно обновлена.";
+    $_SESSION['toast'] = ['type' => 'success', 'message' => 'Информация успешно обновлена.'];
 } else {
-    $_SESSION['error'] = "Ошибка при обновлении данных.";
+    $_SESSION['toast'] = ['type' => 'error', 'message' => 'Ошибка при обновлении данных.'];
 }
 
 header('Location: ../account.php');

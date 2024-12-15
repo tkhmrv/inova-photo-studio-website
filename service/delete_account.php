@@ -29,9 +29,10 @@ $stmt->bind_param('i', $user_id);
 
 if ($stmt->execute()) {
     session_destroy();
+    $_SESSION['toast'] = ['type' => 'success', 'message' => 'Аккаунт успешно удален.'];
     header('Location: ../index.php');
 } else {
-    $_SESSION['error'] = "Ошибка удаления аккаунта.";
+    $_SESSION['toast'] = ['type' => 'error', 'message' => 'Ошибка при удалении аккаунта.'];
     header('Location: ../account.php');
 }
 exit();

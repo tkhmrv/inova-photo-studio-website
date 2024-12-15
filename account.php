@@ -4,6 +4,13 @@ require_once 'functions.php';
 
 session_start();
 
+// Проверяем, есть ли активная сессия
+if (!isset($_SESSION['user_id'])) {
+    header('Location: signin.php');
+    exit();
+}
+
+// Получаем информацию о текущем пользователе
 $user = getCurrentUser();
 
 // Закрываем соединение
@@ -81,15 +88,15 @@ mysqli_close($conn);
                                         </a>
 
                                         <div class="dropdown-menu dropdown-menu-right">
-                                            <?php echo '<a class="dropdown-item text-danger" href="exit.php"
-                                                target="_blank">Выйти</a>'; ?>
-                                            <a class="dropdown-item" href="https://xn--80ahdri7a.site:9080/login/"
-                                                target="_blank">Hestia</a>
-                                            <a class="dropdown-item" href="https://xn--80ahdri7a.site/phpmyadmin/"
-                                                target="_blank">phpMyAdmin</a>
-                                            <a class="dropdown-item" href="https://github.com/tkhmrv/cw"
-                                                target="_blank">GitHub</a>
-
+                                            <a class="dropdown-item text-danger" href="exit.php">Выйти</a>
+                                            <?php if ($user['role_id'] == 2): ?>
+                                                <a class="dropdown-item" href="https://xn--80ahdri7a.site:9080/login/"
+                                                    target="_blank">Hestia</a>
+                                                <a class="dropdown-item" href="https://xn--80ahdri7a.site/phpmyadmin/"
+                                                    target="_blank">phpMyAdmin</a>
+                                                <a class="dropdown-item" href="https://github.com/tkhmrv/cw"
+                                                    target="_blank">GitHub</a>
+                                            <?php endif; ?>
                                         </div>
                                     </div>
                                 </div>
@@ -226,9 +233,68 @@ mysqli_close($conn);
         </div>
 
     </div>
+
+    <!-- Preloader -->
+    <div id="overlayer"></div>
+    <div class="loader">
+        <div class="spinner-border" role="status">
+            <span class="visually-hidden">Загрузка...</span>
+        </div>
+    </div>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/aos.js"></script>
+    <script src="js/counter.js"></script>
+    <script src="js/custom.js"></script>
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/upload-photo.js"></script>
+    
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Проверяем, есть ли данные для toast
+            const toastData = <?php echo json_encode($_SESSION['toast'] ?? null); ?>;
+            if (toastData) {
+                <?php unset($_SESSION['toast']); ?>
+
+                // Находим элементы toast
+                const toastElement = document.getElementById('accountToast');
+                const toastMessage = document.getElementById('toastMessage');
+
+                // Устанавливаем сообщение
+                toastMessage.textContent = toastData.message;
+
+                // Добавляем стиль в зависимости от типа сообщения
+                if (toastData.type === 'error') {
+                    toastElement.classList.add('error');
+                } else {
+                    toastElement.classList.remove('error');
+                }
+
+                // Показываем toast
+                toastElement.classList.add('show');
+                setTimeout(() => {
+                    toastElement.classList.remove('show');
+                }, 5000); // Убираем через 5 секунд
+            }
+        });
+    </script>
+
+    <div class="toast-container">
+        <div id="accountToast" class="toast">
+            <div class="d-flex align-items-center">
+                <div class="toast-body">
+                    <span id="toastMessage"></span>
+                </div>
+                <button type="button" class="btn-close" aria-label="Close"
+                    onclick="this.closest('.toast').classList.remove('show')">&times;</button>
+            </div>
+        </div>
+    </div>
+
+    
 </body>
 
 </html>

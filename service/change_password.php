@@ -21,8 +21,8 @@ $stmt->fetch();
 $stmt->close();
 
 if (!password_verify($current_password, $hashed_password)) {
-    $_SESSION['error'] = "Неверный текущий пароль.";
-    header('Location: ../account.php');
+    $_SESSION['toast'] = ['type' => 'error', 'message' => 'Неверный текущий пароль.'];
+    header('Location: ../account.php#password');
     exit();
 }
 
@@ -33,11 +33,11 @@ $stmt = $conn->prepare($query);
 $stmt->bind_param('si', $new_hashed_password, $user_id);
 
 if ($stmt->execute()) {
-    $_SESSION['success'] = "Пароль успешно обновлен.";
+    $_SESSION['toast'] = ['type' => 'success', 'message' => 'Пароль успешно обновлен.'];
 } else {
-    $_SESSION['error'] = "Ошибка обновления пароля.";
+    $_SESSION['toast'] = ['type' => 'error', 'message' => 'Ошибка обновления пароля.'];
 }
 
-header('Location: ../account.php');
+header('Location: ../account.php#password');
 exit();
 ?>

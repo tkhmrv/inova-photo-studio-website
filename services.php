@@ -26,8 +26,6 @@
 	<title>Archiark &mdash; Free Bootstrap 5 Website Template by Untree.co</title>
 </head>
 
-<body>
-
 	<?php include 'templates/header.php'; ?>
 
 	<div class="hero-2 overlay" style="background-image: url('images/img_3.jpg');">

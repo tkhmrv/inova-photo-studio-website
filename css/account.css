@@ -1,6 +1,7 @@
 body {
     margin-top: 40px;
-    background: #F0F8FF;
+    background: #F2F2F2;
+    /* background: #F0F8FF; */
 }
 
 .card {
@@ -68,7 +69,6 @@ span.btn-primary:focus {
     box-shadow: 0 0 0 0.2rem rgba(255, 84, 4, 0.25) !important;
 }
 
-
 img {
     max-width: 100%;
     height: auto;
@@ -77,6 +77,101 @@ img {
 h1.h3 {
     margin-bottom: 1rem;
 }
+
+ /* Стили для toast */
+ .toast-container {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    z-index: 1100;
+}
+
+.toast {
+    max-width: 350px;
+    background-color: #28a745;
+    color: white;
+    border-radius: 5px;
+    box-shadow: 0 0 0 0.2rem rgba(4, 255, 146, 0.25) !important;
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    transform: translateY(20px);
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.toast.error {
+    background-color: #dc3545; /* Красный цвет для ошибок */
+}
+
+.toast-body {
+    padding: 1rem;
+}
+
+.toast .btn-close {
+    color: white;
+    opacity: 0.8;
+    padding: 0.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.toast .btn-close:hover {
+    opacity: 1;
+}
+
+
+#overlayer {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 7100;
+    background: #fff;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.loader {
+    z-index: 7700;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.spinner-border {
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    vertical-align: text-bottom;
+    border: 0.25em solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+    -webkit-animation: 0.75s linear infinite spinner-border;
+    animation: 0.75s linear infinite spinner-border;
+}
+
+.visually-hidden,
+.visually-hidden-focusable:not(:focus) {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}
+
+
 
 /* Адаптивные стили */
 @media (max-width: 992px) {

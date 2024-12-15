@@ -9,8 +9,10 @@ $slug = isset($_GET['slug']) ? $conn->real_escape_string($_GET['slug']) : '';
 //$slug = $_GET['slug'] ?? null;
 
 if (empty($slug)) {
-    die("Slug is required.");
+	die("Slug is required.");
 }
+
+$user = getCurrentUser();
 
 // SQL-запрос для получения данных о посте по слагу
 $query = "
@@ -45,30 +47,30 @@ $result = $conn->query($query);
 
 // Проверка, найден ли пост
 if ($result && $result->num_rows > 0) {
-    // Извлекаем данные поста
-    $post = $result->fetch_assoc();
+	// Извлекаем данные поста
+	$post = $result->fetch_assoc();
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $name = mysqli_real_escape_string($conn, $_POST['name']);
-    $email = mysqli_real_escape_string($conn, $_POST['email']);
-    $website = mysqli_real_escape_string($conn, $_POST['website']);
-    $message = mysqli_real_escape_string($conn, $_POST['message']);
+	$name = mysqli_real_escape_string($conn, $_POST['name']);
+	$email = mysqli_real_escape_string($conn, $_POST['email']);
+	$website = mysqli_real_escape_string($conn, $_POST['website']);
+	$message = mysqli_real_escape_string($conn, $_POST['message']);
 
-    // Вставляем комментарий в базу данных
-    $comment_query = "INSERT INTO comments (post_slug, name, email, website, message) VALUES (?, ?, ?, ?, ?)";
-    $stmt = $conn->prepare($comment_query);
-    $stmt->bind_param("issss", $slug, $name, $email, $website, $message);
-    if ($stmt->execute()) {
-        header("Location: " . $_SERVER['REQUEST_URI']); // Перезагружаем страницу
-        exit();
-    } else {
-        echo "Ошибка: " . $stmt->error;
-    }
+	// Вставляем комментарий в базу данных
+	$comment_query = "INSERT INTO comments (post_slug, name, email, website, message) VALUES (?, ?, ?, ?, ?)";
+	$stmt = $conn->prepare($comment_query);
+	$stmt->bind_param("issss", $slug, $name, $email, $website, $message);
+	if ($stmt->execute()) {
+		header("Location: " . $_SERVER['REQUEST_URI']); // Перезагружаем страницу
+		exit();
+	} else {
+		echo "Ошибка: " . $stmt->error;
+	}
 }
 
 // Закрытие соединения
-//$conn->close();
+// $conn->close();
 
 // Пример исходной даты из БД
 $created_at = $post['created_at'];
@@ -83,7 +85,7 @@ $formatted_date = $date->format('d') . ' ' . mb_strtolower(getMonthName($date->f
 <html lang="en">
 
 <head>
-	<!-- Required meta tags -->
+
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -108,214 +110,170 @@ $formatted_date = $date->format('d') . ' ' . mb_strtolower(getMonthName($date->f
 	<title>Inova &mdash; студия профессиональной фотографии и видеосъемки</title>
 </head>
 
-<body>
+<?php include 'templates/header.php'; ?>
 
-	<?php include 'templates/header.php'; ?>
+<div class="hero-2 overlay"
+	style="background-image: url('images/<?php echo htmlspecialchars($post['main_photo']); ?>')">
+	<div class="container">
+		<div class="row align-items-center justify-content-center">
+			<div class="col-lg-10 text-center mx-auto">
 
-	<div class="hero-2 overlay" style="background-image: url('images/<?php echo htmlspecialchars($post['main_photo']); ?>')">
-		<div class="container">
-			<div class="row align-items-center justify-content-center">
-				<div class="col-lg-10 text-center mx-auto">
-
-					<h1 class="heading text-white" data-aos="fade-up"><?php echo htmlspecialchars($post['title']); ?></h1>
-					<p class="text-white" data-aos="fade-up" data-aos-delay="100"><span class="d-block mb-3 text-white"
-							data-aos="fade-up"><?php echo $formatted_date; ?><span class="mx-2 text-primary">&bullet;</span> <?php echo htmlspecialchars($post['author']); ?></span></p>
-				</div>
+				<h1 class="heading text-white" data-aos="fade-up"><?php echo htmlspecialchars($post['title']); ?></h1>
+				<p class="text-white" data-aos="fade-up" data-aos-delay="100"><span class="d-block mb-3 text-white"
+						data-aos="fade-up"><?php echo $formatted_date; ?><span class="mx-2 text-primary">&bullet;</span>
+						<?php echo htmlspecialchars($post['author']); ?></span></p>
 			</div>
 		</div>
 	</div>
+</div>
 
-	<div class="section">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-8 blog-content pe-5">
-					<?php echo $post['content'] ?>
-					<div class="pt-5">
-						<p>Тэги: <a><?php echo htmlspecialchars($post['tags']); ?></a>
-						<p>
-					</div>
-
-
-					<div class="pt-5">
-						<h3 class="mb-5">6 Comments</h3>
-						<!-- <ul class="comment-list">
-							<li class="comment">
-								<div class="vcard bio">
-									<img src="images/person_2.jpg" alt="Free Website Template by Free-Template.co">
-								</div>
-								<div class="comment-body">
-									<h3>Jacob Smith</h3>
-									<div class="meta">January 9, 2018 at 2:21pm</div>
-									<p>When she reached the first hills of the Italic Mountains, she had a last view
-										back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet
-										Village and the subline of her own road, the Line Lane. Pityful a rethoric
-										question ran over her cheek, then she continued her way.</p>
-								</div>
-							</li>
-
-							<li class="comment">
-								<div class="vcard bio">
-									<img src="images/person_3.jpg" alt="Free Website Template by Free-Template.co">
-								</div>
-								<div class="comment-body">
-									<h3>Chris Meyer</h3>
-									<div class="meta">January 9, 2018 at 2:21pm</div>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum
-										necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim
-										sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-								</div>
-							</li>
-
-
-							<li class="comment">
-								<div class="vcard bio">
-									<img src="images/person_2.jpg" alt="Free Website Template by Free-Template.co">
-								</div>
-								<div class="comment-body">
-									<h3>Chintan Patel</h3>
-									<div class="meta">January 9, 2018 at 2:21pm</div>
-									<p>Far far away, behind the word mountains, far from the countries Vokalia and
-										Consonantia, there live the blind texts. Separated they live in Bookmarksgrove
-										right at the coast of the Semantics, a large language ocean.</p>
-								</div>
-							</li>
-
-
-
-							<li class="comment">
-								<div class="vcard bio">
-									<img src="images/person_1.jpg" alt="Free Website Template by Free-Template.co">
-								</div>
-								<div class="comment-body">
-									<h3>Jean Doe</h3>
-									<div class="meta">January 9, 2018 at 2:21pm</div>
-									<p>A small river named Duden flows by their place and supplies it with the necessary
-										regelialia. It is a paradisematic country, in which roasted parts of sentences
-										fly into your mouth.</p>
-								</div>
-							</li>
-
-
-							<li class="comment">
-								<div class="vcard bio">
-									<img src="images/person_4.jpg" alt="Free Website Template by Free-Template.co">
-								</div>
-								<div class="comment-body">
-									<h3>Ben Afflick</h3>
-									<div class="meta">January 9, 2018 at 2:21pm</div>
-									<p>Even the all-powerful Pointing has no control about the blind texts it is an
-										almost unorthographic life One day however a small line of blind text by the
-										name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
-								</div>
-							</li>
-
-							<li class="comment">
-								<div class="vcard bio">
-									<img src="images/person_1.jpg" alt="Free Website Template by Free-Template.co">
-								</div>
-								<div class="comment-body">
-									<h3>Jean Doe</h3>
-									<div class="meta">January 9, 2018 at 2:21pm</div>
-									<p>Even the all-powerful Pointing has no control about the blind texts it is an
-										almost unorthographic life One day however a small line of blind text by the
-										name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
-								</div>
-							</li>
-						</ul> -->
-
-						<ul class="comment-list">
-						
-						<?php
-						$query = "SELECT * FROM comments WHERE post_slug = ? ORDER BY comment_created_at DESC";
-						$stmt = $conn->prepare($query);
-						$stmt->bind_param("i", $slug);
-						$stmt->execute();
-						$result = $stmt->get_result();
-
-						while ($row = $result->fetch_assoc()) {
-							echo '
-							<li class="comment">
-								<div class="vcard bio">
-									<img src="images/person_1.jpg" alt="User Avatar">
-								</div>
-								<div class="comment-body">
-									<h3>' . htmlspecialchars($row['name']) . '</h3>
-									<div class="meta">' . htmlspecialchars($row['comment_created_at']) . '</div>
-									<p>' . nl2br(htmlspecialchars($row['message'])) . '</p>
-								</div>
-							</li>';
-						}
-						?>
-
-						</ul>
-						<!-- END comment-list -->
-
-						<div class="comment-form-wrap pt-5">
-							<h3 class="mb-5">Leave a comment</h3>
-							<form action="#" class="">
-								<div class="mb-3">
-									<label for="name">Name *</label>
-									<input type="text" class="form-control" id="name">
-								</div>
-								<div class="mb-3">
-									<label for="email">Email *</label>
-									<input type="email" class="form-control" id="email">
-								</div>
-								<div class="mb-3">
-									<label for="website">Website</label>
-									<input type="url" class="form-control" id="website">
-								</div>
-
-								<div class="mb-3">
-									<label for="message">Message</label>
-									<textarea name="" id="message" cols="30" rows="10" class="form-control"></textarea>
-								</div>
-								<div class="mb-3">
-									<input type="submit" value="Post Comment" class="btn btn-primary btn-md">
-								</div>
-
-							</form>
-						</div>
-					</div>
-
+<div class="section">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8 blog-content pe-5">
+				<?php echo $post['content'] ?>
+				<div class="pt-5">
+					<p>Тэги: <a><?php echo htmlspecialchars($post['tags']); ?></a>
+					<p>
 				</div>
 
-				<div class="col-md-4 sidebar">
-					<div class="sidebar-box">
-						<img src="images/<?php echo htmlspecialchars($post['author_photo']); ?>" alt="Free Website Template by Free-Template.co"
-							class="img-fluid mb-4 w-50 rounded-circle">
-						<h3 class="text-black">Об авторе</h3>
-						<p><?php echo htmlspecialchars($post['author_description']); ?></p>
-					</div>
+				<ul class="comment-list">
 
-					<div class="sidebar-box">
-						<div class="categories">
-							<h3>Категории</h3>
-							<li><a style="color: #fc5404;"><?php echo htmlspecialchars($post['categories']); ?></a></li>
+					<?php
+					$query = "SELECT 
+									c.*, 
+									u.name AS name, 
+									u.email AS email, 
+									u.website AS website,
+									u.photo AS photo,
+									count(*) OVER() AS comment_count
+								FROM 
+									comments c
+								LEFT JOIN 
+									users u ON c.user_id = u.id
+								WHERE 
+									c.post_slug = ?
+								ORDER BY 
+									c.comment_created_at DESC";
+
+					$stmt = $conn->prepare($query);
+					$stmt->bind_param("s", $slug);
+					$stmt->execute();
+					$result = $stmt->get_result();
+
+					$comment_count = 0;
+					$comments = [];
+
+					while ($row = $result->fetch_assoc()) {
+						$comment_count = $row['comment_count'];
+						$comment_date = new DateTime($row['comment_created_at']);
+						$comment_formatted_date = $comment_date->format('d') . ' ' . mb_strtolower(getMonthName($comment_date->format('m'))) . ' ' . $comment_date->format('Y') . ' в ' . $comment_date->format('H:i');
+
+						$comments[] = [
+							'photo' => $row['photo'],
+							'name' => $row['name'],
+							'date' => $comment_formatted_date,
+							'message' => $row['message']
+						];
+					}
+
+					// Вывод количества комментариев
+					echo '<div class="pt-5">
+						<h3 id="comment-count-header" class="mb-5">Количество комментариев: ' . htmlspecialchars($comment_count) . '</h3>';
+
+					// Вывод комментариев
+					foreach ($comments as $comment) {
+						echo '<li class="comment">
+							<div class="vcard bio">
+								<img src="images/users/' . htmlspecialchars($comment['photo']) . '" alt="Аватар комментатотра">
+							</div>
+							<div class="comment-body">
+								<h3>' . htmlspecialchars($comment['name']) . '</h3>
+								<div class="meta">' . htmlspecialchars($comment['date']) . '</div>
+								<p>' . nl2br(htmlspecialchars($comment['message'])) . '</p>
+							</div>
+						</li>';
+					}
+					?>
+				</ul>
+
+				<div class="comment-form-wrap pt-5">
+					<h3 class="mb-5">Оставить комментарий</h3>
+					<form action="service/add_comment.php" method="POST">
+						<input type="hidden" name="post_slug" value="<?php echo htmlspecialchars($slug); ?>">
+						<div class="mb-3">
+							<label for="name">Имя *</label>
+							<input class="form-control" type="text" id="name" name="name" minlength="3" maxlength="100"
+								required
+								value="<?php if (isset($user['name']))
+									echo htmlspecialchars($user['name']); ?>">
 						</div>
+
+						<div class="mb-3">
+							<label for="message">Сообщение *</label>
+							<textarea id="message" name="message" cols="30" rows="10" class="form-control" required
+								maxlength="200" placeholder="Не более 200 символов"></textarea>
+						</div>
+						<div class="mb-3">
+							<input type="submit" value="Опубликовать" class="btn btn-primary btn-md">
+						</div>
+					</form>
+				</div>
+
+
+			</div>
+			<div class="col-md-4 sidebar">
+				<div class="sidebar-box">
+					<img src="images/<?php echo htmlspecialchars($post['author_photo']); ?>" alt="Портрет автора поста"
+						class="img-fluid mb-4 w-50 rounded-circle">
+					<h3 class="text-black">Об авторе</h3>
+					<p><?php echo htmlspecialchars($post['author_description']); ?></p>
+				</div>
+
+				<div class="sidebar-box">
+					<div class="categories">
+						<h3>Категории</h3>
+						<li><a style="color: #fc5404;"><?php echo htmlspecialchars($post['categories']); ?></a></li>
 					</div>
 				</div>
 			</div>
 		</div>
+
 	</div>
+</div>
 
-	<?php include 'templates/footer.php'; ?>
 
-	<!-- Preloader -->
-	<div id="overlayer"></div>
-	<div class="loader">
-		<div class="spinner-border" role="status">
-			<span class="visually-hidden">Загрузка...</span>
-		</div>
+<?php include 'templates/footer.php'; ?>
+
+<!-- Preloader -->
+<div id="overlayer"></div>
+<div class="loader">
+	<div class="spinner-border" role="status">
+		<span class="visually-hidden">Загрузка...</span>
 	</div>
+</div>
 
-	<script src="js/bootstrap.bundle.min.js"></script>
-	<script src="js/tiny-slider.js"></script>
-	<script src="js/aos.js"></script>
-	<script src="js/glightbox.min.js"></script>
-	<script src="js/navbar.js"></script>
-	<script src="js/counter.js"></script>
-	<script src="js/custom.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/tiny-slider.js"></script>
+<script src="js/aos.js"></script>
+<script src="js/glightbox.min.js"></script>
+<script src="js/navbar.js"></script>
+<script src="js/counter.js"></script>
+<script src="js/custom.js"></script>
+<script src="js/add_comment.js"></script>
+
+<!-- <div class="toast-container">
+        <div id="newsToast" class="toast">
+            <div class="d-flex align-items-center">
+                <div class="toast-body">
+                    <span id="toastMessage"></span>
+                </div>
+                <button type="button" class="btn-close" aria-label="Close"
+                    onclick="this.closest('.toast').classList.remove('show')">&times;</button>
+            </div>
+        </div>
+    </div> -->
+
 </body>
 
 </html>

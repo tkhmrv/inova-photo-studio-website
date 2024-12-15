@@ -32,19 +32,33 @@ if ($file['size'] > $max_size) {
     exit();
 }
 
-// Генерируем уникальное имя для файла
+// Получаем текущее имя файла аватара пользователя
+require_once '../db_connection.php';
+$query = "SELECT photo FROM users WHERE id = ?";
+$stmt = $conn->prepare($query);
+$stmt->bind_param('i', $user_id);
+$stmt->execute();
+$stmt->bind_result($photo);
+$stmt->fetch();
+$stmt->close();
+
+// Удаляем старый аватар, если он существует
+if ($photo && file_exists("../images/users/" . $photo)) {
+    unlink("../images/users/" . $photo);
+}
+
+// Генерируем уникальное имя для нового файла
 $ext = pathinfo($file['name'], PATHINFO_EXTENSION);
 $filename = $user_id . '_' . time() . '.' . $ext;
 $upload_path = '../images/users/' . $filename;
 
-// Сохраняем файл
+// Сохраняем новый файл
 if (!move_uploaded_file($file['tmp_name'], $upload_path)) {
     echo json_encode(['success' => false, 'message' => 'Не удалось сохранить файл.']);
     exit();
 }
 
-// Обновляем запись в базе данных
-require_once '../db_connection.php';
+// Обновляем запись в базе данных с новым именем файла
 $query = "UPDATE users SET photo = ? WHERE id = ?";
 $stmt = $conn->prepare($query);
 $stmt->bind_param('si', $filename, $user_id);
