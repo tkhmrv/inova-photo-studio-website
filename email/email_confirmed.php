@@ -1,6 +1,6 @@
 <?php
 // Подключение к базе данных
-require '../db.php';
+require '../db_connection.php';
 
 $token = $_GET['token'] ?? null;
 

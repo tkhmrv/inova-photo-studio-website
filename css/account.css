@@ -1,0 +1,189 @@
+body {
+    margin-top: 40px;
+    background: #F0F8FF;
+}
+
+.card {
+    margin-bottom: 1.5rem;
+    box-shadow: 0 1px 15px 1px rgba(52, 40, 104, .08);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border: 1px solid #e5e9f2;
+    border-radius: .2rem;
+}
+
+.card-header:first-child {
+    border-radius: calc(.2rem - 1px) calc(.2rem - 1px) 0 0;
+}
+
+.card-header {
+    padding: .75rem 1.25rem;
+    background-color: #fff;
+    border-bottom: 1px solid #e5e9f2;
+}
+
+.list-group-item.active {
+    background-color: #fc5404;
+    border-color: #fc5404;
+}
+
+.btn-primary {
+    background-color: #fc5404;
+    border-color: #fc5404;
+}
+
+.btn-primary:hover {
+    background-color: #ca4303;
+    border-color: #ca4303;
+}
+
+a {
+    color: #fc5404;
+}
+
+a:hover {
+    color: #ca4303;
+}
+
+.form-control:focus {
+    border-color: #feaa82;
+    box-shadow: 0 0 0 0.2rem rgba(255, 84, 4, 0.25);
+}
+
+.btn-primary:active,
+.btn-primary:focus,
+.btn-primary:not(:disabled):not(.disabled):active,
+span.btn-primary:active,
+span.btn-primary:focus,
+span.btn-primary:not(:disabled):not(.disabled):active {
+    border-color: #fc5404 !important;
+    background-color: #fc5404 !important;
+    box-shadow: 0 0 0 0.2rem rgba(255, 84, 4, 0.25) !important;
+}
+
+.btn-primary:focus,
+span.btn-primary:focus {
+    box-shadow: 0 0 0 0.2rem rgba(255, 84, 4, 0.25) !important;
+}
+
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+h1.h3 {
+    margin-bottom: 1rem;
+}
+
+/* Адаптивные стили */
+@media (max-width: 992px) {
+
+    /* На планшетах */
+    .container {
+        padding: 0 15px;
+    }
+
+    .card-header {
+        padding: .5rem 1rem;
+    }
+
+    .list-group-item {
+        font-size: 0.9rem;
+    }
+
+    .btn-primary {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 768px) {
+
+    /* На маленьких экранах */
+    .row {
+        flex-direction: column;
+    }
+
+    .col-md-5,
+    .col-md-7 {
+        max-width: 100%;
+        flex-basis: 100%;
+    }
+
+    .card {
+        margin-bottom: 1rem;
+    }
+
+    .card-header {
+        text-align: center;
+    }
+
+    .btn-primary {
+        width: 100%;
+    }
+
+    img.rounded-circle {
+        width: 96px;
+        height: 96px;
+    }
+}
+
+@media (max-width: 576px) {
+
+    /* На очень маленьких экранах */
+    h1.h3 {
+        font-size: 1.5rem;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+
+    .btn-primary {
+        font-size: 0.8rem;
+    }
+
+    .list-group-item {
+        font-size: 0.8rem;
+    }
+
+    .card-header {
+        font-size: 1rem;
+    }
+
+    .form-control {
+        font-size: 0.8rem;
+        padding: .375rem .75rem;
+    }
+
+    .container {
+        padding-right: 0 15px;
+    }
+
+    .card {
+        margin-left: auto;
+        /* Центрирование карточек */
+        margin-right: auto;
+        width: 100%;
+        /* Занимают всю ширину */
+        max-width: 540px;
+        /* Ограничиваем максимальную ширину */
+    }
+
+    .row {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+
+    .col-md-8 {
+        padding-right: 0px;
+        padding-left: 0px;
+    }
+
+    .col-md-4 {
+        padding-right: 0px;
+        padding-left: 0px;
+    }
+
+}

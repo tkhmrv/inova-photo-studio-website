@@ -51,7 +51,7 @@ session_start();
 
                     // Подготовленный запрос для проверки логина
                     try {
-                        $query_user = "SELECT id, username, password FROM user WHERE username = ?";
+                        $query_user = "SELECT id, username, password FROM users WHERE username = ?";
                         $stmt_user = mysqli_prepare($conn, $query_user);
                         mysqli_stmt_bind_param($stmt_user, 's', $username);
                         mysqli_stmt_execute($stmt_user);
@@ -64,7 +64,7 @@ session_start();
                             if (password_verify($password, $hashed_password)) {
                                 //При успешной авторизации в базу данных помещаем token и устанавливаем cookie
                                 $token = bin2hex(random_bytes(15));
-                                $query = "UPDATE user SET token='{$token}' WHERE id='{$user_id}';";
+                                $query = "UPDATE users SET token='{$token}' WHERE id='{$user_id}';";
 
                                 $row = mysqli_query($conn, $query);
 
@@ -112,7 +112,7 @@ session_start();
 
                 <form method="post" action="signin.php" class="pt-3">
                     <div class="form-floating">
-                        <input type="text" class="form-control" id="username" name="username" placeholder="Логин">
+                        <input type="text" class="form-control" id="username" name="username" placeholder="Логин" value="<?php echo htmlspecialchars($username); ?>">
                         <label for="username">Логин</label>
                     </div>
 

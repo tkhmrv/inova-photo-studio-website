@@ -169,7 +169,7 @@ session_start();
         }
         ?>
 
-        <form action="register.php" method="POST" enctype="multipart/form-data" oninput="valid_for  m()">
+        <form action="register.php" method="POST" enctype="multipart/form-data" oninput="valid_form()">
           <!-- Сообщение об ошибке -->
           <?php if ($error): ?>
             <div class="error-message" style="color: red;">
@@ -224,14 +224,14 @@ session_start();
             </label>
           </div>
 
-            <div class="form-group">
-                <label for="user_username">Логин:
-                <input autocomplete="on" type="text" name="user_username" minlength="3" maxlength="20" required id="user_username"
-                    pattern="^[\w]+$" placeholder="Обязательное поле"
-                    value="<?php echo htmlspecialchars($user_username); ?>">
-                <span class="icon fa fa-check valid-i" id='valid_user_username'></span>
-                <span class="icon fa fa-times invalid-i" id='invalid_user_username'></span>
-                </label>
+          <div class="form-group">
+            <label for="user_username">Логин:
+              <input autocomplete="on" type="text" name="user_username" minlength="3" maxlength="20" required id="user_username"
+                pattern="^[\w]+$" placeholder="Обязательное поле"
+                value="<?php echo htmlspecialchars($user_username); ?>">
+              <span class="icon fa fa-check valid-i" id='valid_user_username'></span>
+              <span class="icon fa fa-times invalid-i" id='invalid_user_username'></span>
+            </label>
 
             <div class="hint">От 3 до 20 символов: цифр, английских букв и знака _</div>
           </div>
@@ -276,3 +276,123 @@ session_start();
 </body>
 
 </html>
+
+
+<?php
+require_once '../db_connection.php';
+session_start();
+
+if (!isset($_SESSION['user_id'])) {
+    header('Location: ../login.php');
+    exit();
+}
+
+$user_id = $_SESSION['user_id'];
+
+// Проверяем, был ли отправлен файл
+if (!isset($_FILES['photo']) || $_FILES['photo']['error'] !== UPLOAD_ERR_OK) {
+    $_SESSION['error'] = "Ошибка загрузки изображения.";
+    header('Location: ../account.php');
+    exit();
+}
+
+$allowed_types = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'];
+$file = $_FILES['photo'];
+
+if (!in_array($file['type'], $allowed_types)) {
+    $_SESSION['error'] = "Недопустимый тип файла.";
+    header('Location: ../account.php');
+    exit();
+}
+
+$upload_dir = 'images/users/';
+$new_filename = uniqid('user_', true) . '.' . pathinfo($file['name'], PATHINFO_EXTENSION);
+
+// Удаляем старое изображение, если оно было
+$query = "SELECT photo FROM users WHERE id = ?";
+$stmt = $conn->prepare($query);
+$stmt->bind_param('i', $user_id);
+$stmt->execute();
+$stmt->bind_result($old_photo);
+$stmt->fetch();
+$stmt->close();
+
+if ($old_photo && file_exists($upload_dir . $old_photo)) {
+    unlink($upload_dir . $old_photo);
+}
+
+// Перемещаем новый файл и обновляем БД
+if (move_uploaded_file($file['tmp_name'], $upload_dir . $new_filename)) {
+    $query = "UPDATE users SET photo = ? WHERE id = ?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param('si', $new_filename, $user_id);
+    $stmt->execute();
+    $_SESSION['success'] = "Фотография успешно обновлена.";
+} else {
+    $_SESSION['error'] = "Ошибка сохранения файла.";
+}
+
+// header('Location: ../account.php');
+exit();
+?>
+
+<div class="col-md-4 my-auto">
+                                            <div class="text-center">
+                                                <img alt="Аватар пользователя"
+                                                    src="images/users/<?php echo htmlspecialchars($user['photo']); ?>"
+                                                    class="rounded-circle img-responsive mt-2" width="128" height="128">
+                                                <div class="mt-2">
+                                                    <form action="service/upload_photo.php" method="post"
+                                                        enctype="multipart/form-data">
+                                                        <span class="btn btn-primary"
+                                                            onclick="document.getElementById('customFile').click()">
+                                                            <i class="fa fa-upload"></i>
+                                                        </span>
+                                                        <input type="file" name="photo" class="form-control"
+                                                            id="customFile" style="display: none;"
+                                                            onchange="this.form.submit(); console.log(this.files[0])">
+                                                    </form>
+                                                </div>
+                                                <small>JPG, JPEG, GIF или PNG. Максимальный размер 2Мб</small>
+                                            </div>
+                                        </div>
+
+
+
+                                        <!-- <div class="col-md-4 my-auto">
+                                            <div class="text-center">
+                                                <img alt="Аватар пользователя"
+                                                    src="images/users/<?php echo htmlspecialchars($user['photo']); ?>"
+                                                    class="rounded-circle img-responsive mt-2" width="128" height="128">
+                                                <div class="mt-2">
+                                                    <span class="btn btn-primary"
+                                                        onclick="document.getElementById('customFile').click()"><i
+                                                            class="fa fa-upload"></i></span>
+                                                    <input type="file" class="form-control" id="customFile"
+                                                        style="display: none;">
+                                                </div>
+                                                <small>JPG, JPEG, GIF или PNG. Максимальный размер 2Мб</small>
+                                            </div>
+                                        </div> -->
+
+
+                                        div class="col-md-4 my-auto">
+                                            <div class="text-center">
+                                                <img alt="Аватар пользователя"
+                                                    src="images/users/<?php echo htmlspecialchars($user['photo']); ?>"
+                                                    class="rounded-circle img-responsive mt-2" width="128" height="128">
+                                                <div class="mt-2">
+                                                    <form id="upload_form" action="service/upload_photo.php"
+                                                        method="post" enctype="multipart/form-data">
+                                                        <span class="btn btn-primary"
+                                                            onclick="document.getElementById('customFile').click()">
+                                                            <i class="fa fa-upload"></i>
+                                                        </span>
+                                                        <input type="file" name="photo" class="form-control"
+                                                            id="customFile" style="display: none;"
+                                                            onchange="console.log(this.files[0]); this.form.submit() ">
+                                                    </form>
+                                                </div>
+                                                <small>JPG, JPEG, GIF или PNG. Максимальный размер 2Мб</small>
+                                            </div>
+                                        </div>

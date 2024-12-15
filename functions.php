@@ -20,7 +20,7 @@ function check_cookie()
     FILTER_VALIDATE_REGEXP,
     array('options' => array('regexp' => '/^[0-9a-f]+$/'))
   );
-  $query = "SELECT token FROM user WHERE id='{$user_id}'";
+  $query = "SELECT token FROM users WHERE id='{$user_id}'";
   $result = mysqli_query($conn, $query);
   $row = mysqli_fetch_array($result);
   if ($token == $row['token']) {
@@ -62,7 +62,7 @@ function getCurrentUser()
   }
 
   $user_id = $_SESSION['user_id'];
-  $query = $conn->prepare("SELECT * FROM user WHERE id = ?");
+  $query = $conn->prepare("SELECT * FROM users WHERE id = ?");
   $query->bind_param("i", $user_id);
   $query->execute();
   $result = $query->get_result();

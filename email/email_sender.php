@@ -1,15 +1,15 @@
 <?php
-require '../vendor/phpmailer/src/PHPMailer.php';
-require '../vendor/phpmailer/src/SMTP.php';
-require '../vendor/phpmailer/src/Exception.php';
+require '../vendor/phpmailer/phpmailer/src/PHPMailer.php';
+require '../vendor/phpmailer/phpmailer/src/SMTP.php';
+require '../vendor/phpmailer/phpmailer/src/Exception.php';
 
 require_once('../functions.php');
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-$email = $_GET['email'];
 $username = $_GET['username'];
+$email = $_GET['email'];
 $email_token = $_GET['token'];
 
 $mail = new PHPMailer(true);
@@ -46,7 +46,7 @@ try {
   echo "Письмо успешно отправлено!";
 
   // Перенаправление на страницу профиля
-  header("Location: /cw/account.php");
+  header("Location: ../account.php");
 } catch (Exception $e) {
   echo "Ошибка при отправке письма: {$mail->ErrorInfo}!";
 }

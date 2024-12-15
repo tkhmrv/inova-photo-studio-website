@@ -46,6 +46,11 @@
 					<a href="signin.php">Войти</a>
 				</li>
 			</ul>
+			<ul class="site-menu float-end d-none d-lg-inline-block">
+						<li class="cta-button">
+					<a href="account.php">ЛК</a>
+				</li>
+			</ul>
 
 
 		</div>

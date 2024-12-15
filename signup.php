@@ -99,7 +99,7 @@ session_start();
                                     $_SESSION['token'] = $token;
 
                                     // Отправка подтверждающего письма
-                                    header("Location: /cw/email/email_sender.php?user_username={$username}&email={$email}&token={$token}");
+                                    header("Location: email/email_sender.php?user_username={$username}&email={$email}&token={$token}");
 
                                 } else {
                                     $error = "Возникла ошибка при регистрации (попробуйте позже): ";
@@ -158,8 +158,7 @@ session_start();
                         <label for="email">Электронная почта</label>
                     </div>
 
-                    <p class="caption mb-4">Пароль должен содержать заглавную и строчную букву, цифру и специальный
-                        символ</p>
+                    <p class="caption mb-4">Пароль должен содержать не менее 8 символов, заглавную и строчную букву, цифру и специальный символ.</p>
 
                     <div class="form-floating">
                         <span class="password-show-toggle js-password-show-toggle"><span class="uil"></span></span>
@@ -179,8 +178,8 @@ session_start();
 
                     <div class="d-flex justify-content-between">
                         <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="remember">
-                            <label for="remember" class="form-check-label">Я соглашаюсь с <a href="#">политикой
+                            <input type="checkbox" class="form-check-input" id="privacy" required name="privacy">
+                            <label for="privacy" class="form-check-label">Я соглашаюсь с <a href="#">политикой
                                     конфиденциальности</a></label>
                         </div>
                     </div>
