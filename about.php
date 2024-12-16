@@ -93,7 +93,7 @@
 							фотосессии для портретов, свадеб и других важных событий. Мы создаем комфортную атмосферу
 							для вашего фото-сеанса.</p>
 						<p>
-							<a href="#" class="more-2 ms_booking>Записаться <span class="icon-arrow_forward"></span></a>
+							<a href="#" class="more-2 ms_booking">Записаться <span class="icon-arrow_forward"></span></a>
 						</p>
 					</div>
 				</div>
