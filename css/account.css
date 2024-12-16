@@ -79,7 +79,7 @@ h1.h3 {
 }
 
  /* Стили для toast */
- .toast-container {
+ /* .toast-container {
     position: fixed;
     bottom: 1rem;
     right: 1rem;
@@ -103,7 +103,7 @@ h1.h3 {
 }
 
 .toast.error {
-    background-color: #dc3545; /* Красный цвет для ошибок */
+    background-color: #dc3545; 
 }
 
 .toast-body {
@@ -121,7 +121,90 @@ h1.h3 {
 
 .toast .btn-close:hover {
     opacity: 1;
-}
+} */
+.toast-container {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    z-index: 1100;
+    max-width: 400px;
+    width: 100%;
+  }
+  
+  .toast {
+    width: 100%;
+    background-color: #28a745;
+    color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 0 0 0.2rem rgba(4, 255, 146, 0.25);
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    transform: translateY(20px);
+    display: flex;
+    align-items: center; /* Выравнивание содержимого по центру вертикально */
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+  }
+  
+  .toast.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .toast.error {
+    background-color: #dc3545;
+  }
+  
+  .toast-body {
+    flex-grow: 1; /* Занимает оставшееся пространство */
+    margin-right: 1rem; /* Отступ между текстом и кнопкой */
+    font-size: 1rem; /* Более читаемый текст */
+    line-height: 1.4; /* Оптимальная межстрочная высота */
+  }
+  
+  .toast .btn-close {
+    color: white;
+    opacity: 0.8;
+    padding: 0; /* Убираем лишние отступы */
+    font-size: 2rem; /* Размер крестика */
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex; /* Добавляем flex для центрирования */
+    align-items: center; /* Центрируем крестик */
+    justify-content: center; /* Центрируем крестик */
+    flex-shrink: 0; /* Запрещает кнопке сжиматься */
+    margin-right: -8px;
+  }
+  
+  .toast .btn-close:hover {
+    opacity: 1;
+  }
+  
+  .toast-container .toast:not(:last-child) {
+    margin-bottom: 1rem; /* Разделение тостов */
+  }
+
+  @media (max-width: 576px) {
+    .toast-container {
+      left: 1rem; /* Смещаем контейнер влево */
+      right: 1rem; /* Уменьшаем отступ справа */
+      max-width: calc(100% - 2rem); /* Делаем ширину контейнера адаптивной */
+    }
+  
+    .toast {
+      padding: 0.5rem 0.75rem; /* Уменьшаем внутренние отступы */
+      font-size: 0.9rem; /* Немного уменьшаем текст */
+    }
+  
+    .toast-body {
+      margin-right: 0.5rem; /* Уменьшаем отступ между текстом и кнопкой */
+    }
+  
+    .toast .btn-close {
+      font-size: 1.5rem; /* Уменьшаем размер крестика */
+    }
+  }
 
 
 #overlayer {

@@ -30,7 +30,7 @@ $user = getCurrentUser();
 			<a href="index.php" class="logo m-0 float-start">Inova<span class="text-primary">.</span> </a>
 
 			<ul class="js-clone-nav d-none d-lg-inline-block text-start site-menu float-start">
-				<li class="active"><a href="index.php">Главная</a></li>
+				<li><a href="services.php">Услуги</a></li>
 				<li class="has-children">
 					<a href="projects.php">Проекты</a>
 					<ul class="dropdown" style="min-width: 11vw;">
@@ -42,7 +42,14 @@ $user = getCurrentUser();
 						<li><a href="project-surf.php">Серфинг на Камчатке</a></li>
 					</ul>
 				</li>
-				<li><a href="services.php">Услуги</a></li>
+				<li class="has-children">
+					<a>Новости</a>
+					<ul class="dropdown" style="min-width: 11vw;">
+						<li><a href="universal-post.php?slug=street-photography">Уличная фотосъемка</a></li>
+						<li><a href="universal-post.php?slug=grant-won">Грант</a></li>
+						<li><a href="universal-post.php?slug=film-photography">Пленочная фотография</a></li>
+					</ul>
+				</li>
 				<li><a href="about.php">О нас</a></li>
 				<li><a href="contacts.php">Контакты</a></li>
 			</ul>
@@ -52,7 +59,7 @@ $user = getCurrentUser();
 				<span></span>
 			</a>
 
-			<ul class="site-menu float-end d-none d-lg-inline-block">
+			<ul class="site-menu float-end d-none d-lg-inline-block" style="margin-top: 0.2vh;">
 				<?php if (isset($_SESSION['user_id'])): ?>
 					<li class="cta-button">
 						<a href="account.php" style="padding: 0px;">
@@ -63,16 +70,18 @@ $user = getCurrentUser();
 						</a>
 					</li>
 				<?php else: ?>
-					<ul class="site-menu float-end d-none d-lg-inline-block ps-2">
-						<li class="cta-button">
-							<a href="signup.php">Зарегистрироваться</a>
-						</li>
-					</ul>
-					<ul class="site-menu float-end d-none d-lg-inline-block">
-						<li class="cta-button">
+					<!-- <ul class="site-menu float-end d-none d-lg-inline-block ps-2"> -->
+					<li class="cta-button">
 							<a href="signin.php">Войти</a>
 						</li>
-					</ul>
+						
+						<li class="cta-button ps-2">
+							<a href="signup.php">Зарегистрироваться</a>
+						</li>
+					<!-- </ul> -->
+					<!-- <ul class="site-menu float-end d-none d-lg-inline-block"> -->
+						
+					<!-- </ul> -->
 				<?php endif; ?>
 			</ul>
 

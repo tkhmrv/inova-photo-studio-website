@@ -260,7 +260,7 @@ mysqli_close($conn);
                 <?php unset($_SESSION['toast']); ?>
 
                 // Находим элементы toast
-                const toastElement = document.getElementById('accountToast');
+                const toastElement = document.getElementById('toast');
                 const toastMessage = document.getElementById('toastMessage');
 
                 // Устанавливаем сообщение
@@ -283,7 +283,7 @@ mysqli_close($conn);
     </script>
 
     <div class="toast-container">
-        <div id="accountToast" class="toast">
+        <div id="toast" class="toast">
             <div class="d-flex align-items-center">
                 <div class="toast-body">
                     <span id="toastMessage"></span>
