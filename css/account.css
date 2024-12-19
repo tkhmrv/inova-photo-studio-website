@@ -166,7 +166,7 @@ h1.h3 {
     color: white;
     opacity: 0.8;
     padding: 0; /* Убираем лишние отступы */
-    font-size: 2rem; /* Размер крестика */
+    font-size: 1.25rem; /* Размер крестика */
     background: none;
     border: none;
     cursor: pointer;
@@ -174,7 +174,6 @@ h1.h3 {
     align-items: center; /* Центрируем крестик */
     justify-content: center; /* Центрируем крестик */
     flex-shrink: 0; /* Запрещает кнопке сжиматься */
-    margin-right: -8px;
   }
   
   .toast .btn-close:hover {
@@ -184,6 +183,7 @@ h1.h3 {
   .toast-container .toast:not(:last-child) {
     margin-bottom: 1rem; /* Разделение тостов */
   }
+  
 
   @media (max-width: 576px) {
     .toast-container {

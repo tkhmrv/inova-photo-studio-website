@@ -5,8 +5,7 @@ $dotenv->load();
 
 function handl_error($error_message, $system_error_message)
 {
-  header("Location: /cw/main-site/error.php?" . "error_message={$error_message}&" .
-    "system_error_message={$system_error_message}");
+  header("Location: error404.php?");
   exit();
 }
 

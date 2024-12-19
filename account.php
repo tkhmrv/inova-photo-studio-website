@@ -5,7 +5,7 @@ require_once 'functions.php';
 session_start();
 
 // Проверяем, есть ли активная сессия
-if (!isset($_SESSION['user_id'])) {
+if (!isAuthenticated()) {
     header('Location: signin.php');
     exit();
 }
@@ -13,7 +13,15 @@ if (!isset($_SESSION['user_id'])) {
 // Получаем информацию о текущем пользователе
 $user = getCurrentUser();
 
-// Закрываем соединение
+if (!$user) {
+    // Если пользователь не найден в БД, уничтожаем сессию и перенаправляем
+    session_unset();
+    session_destroy();
+    header('Location: signin.php');
+    exit();
+}
+
+// Закрываем соединение с БД
 mysqli_close($conn);
 ?>
 
@@ -96,7 +104,8 @@ mysqli_close($conn);
                                                     target="_blank">phpMyAdmin</a>
                                                 <a class="dropdown-item" href="https://github.com/tkhmrv/cw"
                                                     target="_blank">GitHub</a>
-                                                <a class="dropdown-item" href="https://yclients.com/online/booking_forms/1195711"
+                                                <a class="dropdown-item"
+                                                    href="https://yclients.com/online/booking_forms/1195711"
                                                     target="_blank">YClients</a>
                                             <?php endif; ?>
                                         </div>
@@ -104,6 +113,7 @@ mysqli_close($conn);
                                 </div>
                                 <h5 class="card-title mb-0">Информация о пользователе</h5>
                             </div>
+
                             <div class="card-body">
                                 <form action="service/update_user.php" method="POST">
                                     <div class="row">
@@ -129,6 +139,14 @@ mysqli_close($conn);
                                                 <input class="form-control" type="email" autocomplete="on" name="email"
                                                     id="email" required placeholder="Электронная почта"
                                                     value="<?php echo htmlspecialchars($user['email']); ?>">
+                                                <?php
+                                                if ($user['email_verified'] == 0) {
+                                                    echo '
+                                                <div class="alert alert-warning mt-3">
+                                                    Ваша электронная почта не подтверждена. Проверьте ее и перейдите по ссылке подтверждения.<br>
+                                                </div>';
+                                                }
+                                                ?>
                                             </div>
 
                                             <div class="form-group">
@@ -138,7 +156,6 @@ mysqli_close($conn);
                                                     value="<?php echo htmlspecialchars($user['website']); ?>">
                                             </div>
                                         </div>
-
 
 
                                         <div class="col-md-4 my-auto">
@@ -158,11 +175,12 @@ mysqli_close($conn);
                                             </div>
                                         </div>
 
+
+
                                     </div>
 
                                     <button type="submit" class="btn btn-primary">Сохранить
                                         изменения</button>
-
                                 </form>
 
 
@@ -181,7 +199,7 @@ mysqli_close($conn);
                                         <label for="currentPassword">Текущий пароль</label>
                                         <input type="password" class="form-control" id="currentPassword"
                                             name="currentPassword">
-                                        <small><a href="#">Забыли пароль?</a></small>
+                                        <!-- <small><a href="#">Забыли пароль?</a></small> -->
                                     </div>
 
                                     <div class="form-group">
@@ -251,7 +269,7 @@ mysqli_close($conn);
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/upload-photo.js"></script>
-    
+
 
 
     <script>
@@ -296,7 +314,7 @@ mysqli_close($conn);
         </div>
     </div>
 
-    
+
 </body>
 
 </html>

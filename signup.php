@@ -179,7 +179,7 @@ session_start();
                     <div class="d-flex justify-content-between">
                         <div class="form-check">
                             <input type="checkbox" class="form-check-input" id="privacy" required name="privacy">
-                            <label for="privacy" class="form-check-label">Я соглашаюсь с <a href="#">политикой
+                            <label for="privacy" class="form-check-label">Я соглашаюсь с <a href="privacy-policy.php" target="_blank">политикой
                                     конфиденциальности</a></label>
                         </div>
                     </div>
@@ -210,6 +210,7 @@ session_start();
         crossorigin="anonymous"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+    <script src="js/auth.js"></script>
 </body>
 
 </html>

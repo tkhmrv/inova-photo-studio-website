@@ -31,6 +31,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function addCommentToPage(comment) {
         const commentCountHeader = document.getElementById('comment-count-header');
+    
+        // Создаём HTML нового комментария
         const commentHTML = `
             <li class="comment">
                 <div class="vcard bio">
@@ -43,7 +45,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             </li>
         `;
+    
+        // Добавляем комментарий на страницу
         commentCountHeader.insertAdjacentHTML('afterend', commentHTML);
+    
+        // Обновляем количество комментариев
+        const currentCount = parseInt(commentCountHeader.textContent.match(/\d+/)) || 0; // Получаем текущее число
+        const newCount = currentCount + 1; // Увеличиваем на 1
+        commentCountHeader.textContent = `Количество комментариев: ${newCount}`;
     }
 });
 

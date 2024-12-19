@@ -4535,7 +4535,7 @@ textarea.form-control-lg {
       width: 100%;
     }
     
-    /* .toast {
+    .toast {
       width: 100%;
       background-color: #28a745;
       color: white;
@@ -4545,15 +4545,8 @@ textarea.form-control-lg {
       transition: opacity 0.5s ease, transform 0.5s ease;
       transform: translateY(20px);
       display: flex;
-      align-items: center;
+      align-items: center; /* Выравнивание содержимого по центру вертикально */
       justify-content: space-between;
-      padding: 0.75rem 1rem;
-    } */
-
-    .toast {
-      display: grid; /* Используем grid вместо flex */
-      grid-template-columns: 1fr auto; /* Две колонки: текст занимает всё пространство, кнопка — автоматический размер */
-      align-items: center; /* Центрируем содержимое по вертикали */
       padding: 0.75rem 1rem;
     }
     
@@ -4567,29 +4560,25 @@ textarea.form-control-lg {
     }
     
     .toast-body {
-      flex-grow: 1;
-      margin-right: 1rem; 
-      font-size: 1rem; 
-      line-height: 1.4; 
+      flex-grow: 1; /* Занимает оставшееся пространство */
+      margin-right: 1rem; /* Отступ между текстом и кнопкой */
+      font-size: 1rem; /* Более читаемый текст */
+      line-height: 1.4; /* Оптимальная межстрочная высота */
     }
     
     .toast .btn-close {
       color: white;
       opacity: 0.8;
-      font-size: 1.5rem; /* Размер крестика */
+      padding: 0; /* Убираем лишние отступы */
+      font-size: 1.25rem; /* Размер крестика */
       background: none;
       border: none;
       cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      height: 100%; /* Растягиваем кнопку на высоту контейнера */
-      align-self: center; /* Центрируем кнопку по вертикали */
-      margin-left: 0.5rem; /* Добавляем отступ слева */
-      margin-right: -10px;
+      display: flex; /* Добавляем flex для центрирования */
+      align-items: center; /* Центрируем крестик */
+      justify-content: center; /* Центрируем крестик */
+      flex-shrink: 0; /* Запрещает кнопке сжиматься */
     }
-    
     
     .toast .btn-close:hover {
       opacity: 1;
@@ -4598,6 +4587,7 @@ textarea.form-control-lg {
     .toast-container .toast:not(:last-child) {
       margin-bottom: 1rem; /* Разделение тостов */
     }
+    
 
     @media (max-width: 576px) {
       .toast-container {
