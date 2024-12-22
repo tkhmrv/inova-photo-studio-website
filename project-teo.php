@@ -52,7 +52,7 @@
 
 			<div class="row mb-5 justify-content-between">
 				<div class="col-lg-6 mb-lg-0 mb-4">
-					<img src="images/teo.jpg" alt="Наглядная фотография работы над проектом или завершенного проект"
+					<img src="images/projects/teo.jpg" alt="Наглядная фотография работы над проектом или завершенного проект"
 						class="img-fluid">
 				</div>
 				<div class="col-lg-5">
@@ -102,7 +102,7 @@
 				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
 					<div class="single-portfolio">
 						<a href="project-nike.php">
-							<img src="images/nike-prev.jpg" alt="Фотография проекта" class="img-fluid">
+							<img src="images/projects/nike-prev.jpg" alt="Фотография проекта" class="img-fluid">
 							<div class="contents">
 								<h3>Nike</h3>
 								<div class="cat">Рекламная кампания</div>
@@ -113,7 +113,7 @@
 				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
 					<div class="single-portfolio">
 						<a href="project-acne.php">
-							<img src="images/acne-prev.jpg" alt="Фотография проекта" class="img-fluid">
+							<img src="images/projects/acne-prev.jpg" alt="Фотография проекта" class="img-fluid">
 							<div class="contents">
 								<h3>Acne Studios</h3>
 								<div class="cat">Брендовая фотосессия</div>
@@ -124,7 +124,7 @@
 				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
 					<div class="single-portfolio">
 					<a href="project-koronskaya.php">
-							<img src="images/koronskaya-prev.jpg" alt="Фотография проекта" class="img-fluid">
+							<img src="images/projects/koronskaya-prev.jpg" alt="Фотография проекта" class="img-fluid">
 							<div class="contents">
 								<h3>Анастасия Коронская</h3>
 								<div class="cat">Съемка для соцсетей</div>

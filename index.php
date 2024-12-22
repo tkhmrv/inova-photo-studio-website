@@ -66,7 +66,7 @@
 				<p><a href="services.php" class="more-2">Услуги<span class="icon-arrow_forward"></span></a></p>
 			</div>
 			<div class="col-lg-7 ms-auto">
-				<img src="images/try1.jpg" alt="Image" class="img-fluid img-r">
+				<img src="images/studio.jpg" alt="Image" class="img-fluid img-r">
 			</div>
 		</div>
 	</div>
@@ -239,7 +239,7 @@
 			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
 				<div class="single-portfolio">
 					<a href="project-nike.php">
-						<img src="images/nike-prev.jpg" alt="Фотография проекта" class="img-fluid">
+						<img src="images/projects/nike-prev.jpg" alt="Фотография проекта" class="img-fluid">
 						<div class="contents">
 							<h3>Nike</h3>
 							<div class="cat">Рекламная кампания</div>
@@ -250,7 +250,7 @@
 			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
 				<div class="single-portfolio">
 					<a href="project-acne.php">
-						<img src="images/acne-prev.jpg" alt="Фотография проекта" class="img-fluid">
+						<img src="images/projects/acne-prev.jpg" alt="Фотография проекта" class="img-fluid">
 						<div class="contents">
 							<h3>Acne Studios</h3>
 							<div class="cat">Брендовая фотосессия</div>
@@ -261,7 +261,7 @@
 			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
 				<div class="single-portfolio">
 					<a href="project-koronskaya.php">
-						<img src="images/koronskaya-prev.jpg" alt="Фотография проекта" class="img-fluid">
+						<img src="images/projects/koronskaya-prev.jpg" alt="Фотография проекта" class="img-fluid">
 						<div class="contents">
 							<h3>Анастасия Коронская</h3>
 							<div class="cat">Съемка для соцсетей</div>
@@ -273,7 +273,7 @@
 			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
 				<div class="single-portfolio">
 					<a href="project-teo.php">
-						<img src="images/teo-prev.jpg" alt="Фотография проекта" class="img-fluid">
+						<img src="images/projects/teo-prev.jpg" alt="Фотография проекта" class="img-fluid">
 						<div class="contents">
 							<h3>Тео Крафорд</h3>
 							<div class="cat">Творческий проект</div>
@@ -284,7 +284,7 @@
 			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
 				<div class="single-portfolio">
 					<a href="project-rds.php">
-						<img src="images/rds-prev.jpg" alt="Image" class="img-fluid">
+						<img src="images/projects/rds-prev.jpg" alt="Image" class="img-fluid">
 						<div class="contents">
 							<h3>RDS GP 2024</h3>
 							<div class="cat">Съемка соревнований</div>
@@ -295,7 +295,7 @@
 			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
 				<div class="single-portfolio">
 					<a href="project-surf.php">
-						<img src="images/surf-prev.jpg" alt="Image" class="img-fluid">
+						<img src="images/projects/surf-prev.jpg" alt="Image" class="img-fluid">
 						<div class="contents">
 							<h3>Серфинг на Камчатке</h3>
 							<div class="cat">Съемка фильма</div>
