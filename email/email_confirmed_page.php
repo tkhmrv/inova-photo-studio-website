@@ -16,19 +16,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto&display=swap"
         rel="stylesheet">
 
-    <link rel="stylesheet" href="fonts/icomoon/style.css">
-    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
-    <link rel="stylesheet" href="css/tiny-slider.css">
-    <link rel="stylesheet" href="css/aos.css">
-    <link rel="stylesheet" href="css/glightbox.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../fonts/icomoon/style.css">
+    <link rel="stylesheet" href="../fonts/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="../css/tiny-slider.css">
+    <link rel="stylesheet" href="../css/aos.css">
+    <link rel="stylesheet" href="../css/glightbox.min.css">
+    <link rel="stylesheet" href="../css/style.css">
 
     <title>Inova &mdash; студия профессиональной фотографии и видеосъемки</title>
 </head>
 
 <body></body>
 
-<div class="hero-2 overlay" style="background-image: url('images/hero4.jpg');">
+<div class="hero-2 overlay" style="background-image: url('../images/hero4.jpg');">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-6 mx-auto">
@@ -86,12 +86,12 @@
                 ?>
 
                 <div class="play-vid">
-                    <a href="index.php" class="btn btn-outline-light btn-sm w-100">
+                    <a href="../index.php" class="btn btn-outline-light btn-sm w-100">
                         На главную
                     </a>
                 </div>
                 <div class="play-vid mt-3">
-                    <a href="account.php" class="btn btn-outline-light btn-sm w-100">
+                    <a href="../account.php" class="btn btn-outline-light btn-sm w-100">
                         В личный кабинет
                     </a>
                 </div>
@@ -108,13 +108,13 @@
     </div>
 </div>
 
-<script src="js/bootstrap.bundle.min.js"></script>
-<script src="js/tiny-slider.js"></script>
-<script src="js/aos.js"></script>
-<script src="js/glightbox.min.js"></script>
-<script src="js/navbar.js"></script>
-<script src="js/counter.js"></script>
-<script src="js/custom.js"></script>
+<script src="../js/bootstrap.bundle.min.js"></script>
+<script src="../js/tiny-slider.js"></script>
+<script src="../js/aos.js"></script>
+<script src="../js/glightbox.min.js"></script>
+<script src="../js/navbar.js"></script>
+<script src="../js/counter.js"></script>
+<script src="../js/custom.js"></script>
 </body>
 
 </html>
